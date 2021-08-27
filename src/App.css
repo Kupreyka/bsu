@@ -1,10 +1,14 @@
 .App{
     display: grid;
-    grid-template-rows: 1fr 2fr 1fr;
+    grid-template-rows: 1fr 10fr 1fr;
     row-gap:  1em;
+    height: 100vh;
 }
 .main{
     display: grid;
     grid-template-columns: 2fr 10fr;
     column-gap: 1em;
+}
+.components{
+    background: aliceblue;
 }
