@@ -1,0 +1,8 @@
+.dialogs{
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+    font-size: 1.4em;
+}
+.name, .message{
+    padding: 1em 0;
+}

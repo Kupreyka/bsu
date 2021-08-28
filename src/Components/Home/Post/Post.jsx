@@ -1,8 +1,8 @@
 import style from './Post.module.css'
 
-const Post = () => {
+const Post = (props) => {
     return(
-        <div className={style.post}>Post</div>
+        <div className={style.post}>{props.message}</div>
     )
 }
 

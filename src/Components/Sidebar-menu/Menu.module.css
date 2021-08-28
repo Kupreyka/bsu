@@ -7,10 +7,14 @@
 .menu a{
     text-decoration: none;
     margin: .1em auto;
-    font-size: 1.3em;
+    font-size: 1.4em;
     color: cadetblue;
 }
 
 .menu a:hover{
+    color: darkcyan;
+}
+
+.menu a.active{
     color: darkcyan;
 }

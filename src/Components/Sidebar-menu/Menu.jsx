@@ -1,13 +1,13 @@
 import style from './Menu.module.css'
-import {Link} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 
 
 const Menu = () => {
     return(
         <div className={style.menu}>
-            <Link to='/home'>Home</Link>
-            <Link to="/message">Message</Link>
-            <Link to="/feed">Feed</Link>
+            <NavLink to='/home' activeClassName={style.active}>Home</NavLink>
+            <NavLink to="/message" activeClassName={style.active}>Message</NavLink>
+            <NavLink to="/feed" activeClassName={style.active}>Feed</NavLink>
         </div>
     )
 }
