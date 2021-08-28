@@ -5,10 +5,33 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from "react-router-dom";
 
+
+let nameData = [
+    {id: 1, name: 'Kirill'},
+    {id: 2, name: 'Svetlana'},
+    {id: 3, name: 'Andrey'},
+    {id: 4, name: 'Artem'},
+    {id: 5, name: 'Alexey'}
+]
+
+let MessageData = [
+    {message: 'Hello'},
+    {message: 'How are you?'},
+    {message: 'Goodbye'}
+]
+
+
+let messageData = [
+    {message: 'Hello'},
+    {message: 'How are you?'},
+    {message: 'Sorry'}
+]
+
+
 ReactDOM.render(
     <React.StrictMode>
         <BrowserRouter>
-            <App/>
+            <App messageData={messageData} MessageData={MessageData} nameData={nameData}/>
         </BrowserRouter>
     </React.StrictMode>,
     document.getElementById('root')

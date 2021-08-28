@@ -10,16 +10,16 @@ import Feed from "./Components/Feed/Feed";
 
 
 
-function App() {
+function App(props) {
   return (
     <div className="App">
         <Header/>
         <div className='main'>
             <Menu/>
             <div className="components">
-                <Route path='/home' component={Home}/>
-                <Route path='/message' component={Message}/>
-                <Route path='/feed' component={Feed}/>
+                <Route path='/home' render={()=><Home messageData={props.messageData} />}/>
+                <Route path='/message' render={()=><Message nameData={props.nameData} MessageData={props.MessageData}/>}/>
+                <Route path='/feed' render={()=><Feed/>}/>
             </div>
         </div>
         <Footer/>

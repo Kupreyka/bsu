@@ -1,10 +1,11 @@
 import style from './Header.module.css'
 import logo from './images/logo.png'
+import {NavLink} from "react-router-dom";
 
 const Header = () => {
     return(
         <div className={style.header}>
-            <a href="/"><img src={logo} alt="logo"/></a>
+            <NavLink to="/"><img src={logo} alt="logo"/></NavLink>
             <div className={style.registration}>
                 <button>Sign in</button>
             </div>
