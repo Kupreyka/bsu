@@ -1,19 +1,32 @@
 import style from './Message.module.css'
+import {NavLink} from "react-router-dom";
 
-const Message = () => {
+const Name = (props) => {
+    return(
+        <NavLink to={'/message/'+ props.id}>{props.name}</NavLink>
+    )
+}
+
+const Messages = (props) => {
+    return(
+        <div>{props.message}</div>
+    )
+}
+
+const Message = (props) => {
     return(
         <div className={style.dialogs}>
             <div className={style.name}>
-                <div>Kirill</div>
-                <div>Sveta</div>
-                <div>Andrey</div>
-                <div>Artem</div>
-                <div>Natali</div>
+                <Name id='1' name='Kirill'/>
+                <Name id='2' name='Svetlana'/>
+                <Name id='3' name='Andrey'/>
+                <Name id='4' name='Artem'/>
+                <Name id='5' name='Alexey'/>
             </div>
             <div className={style.message}>
-                <div>Hello</div>
-                <div>How are you?</div>
-                <div>Sorry</div>
+                <Messages message='Hello'/>
+                <Messages message='How are you?'/>
+                <Messages message='Sorry'/>
             </div>
         </div>
     )

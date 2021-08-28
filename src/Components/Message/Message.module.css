@@ -4,5 +4,11 @@
     font-size: 1.4em;
 }
 .name, .message{
-    padding: 1em 0;
+    padding: 1em 3em;
+    display: flex;
+    flex-direction: column;
+}
+.name a{
+    text-decoration: none;
+    color: cadetblue;
 }
