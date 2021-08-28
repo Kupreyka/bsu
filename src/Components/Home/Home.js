@@ -6,7 +6,7 @@ const Home = (props) => {
         <div className={style.home}>
             <div>avatar</div>
             <div>info</div>
-            <Posts messageData={props.messageData}/>
+            <Posts messageData={props.messageData} addPost={props.addPost}/>
         </div>
     )
 }

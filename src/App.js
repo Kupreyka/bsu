@@ -17,8 +17,8 @@ function App(props) {
         <div className='main'>
             <Menu/>
             <div className="components">
-                <Route path='/home' render={()=><Home messageData={props.state.ProfilePage.messageData} />}/>
-                <Route path='/message' render={()=><Message DialogsPage={props.state.DialogsPage} />}/>
+                <Route path='/home' render={()=><Home messageData={props.state.ProfilePage.messageData} addPost={props.addPost}/>}/>
+                <Route path='/message' render={()=><Message DialogsPage={props.state.DialogsPage} addMessage={props.addMessage} />}/>
                 <Route path='/feed' render={()=><Feed/>}/>
             </div>
         </div>

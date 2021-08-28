@@ -1,19 +1,18 @@
-
 let state = {
-    ProfilePage:{
-        messageData : [
+    ProfilePage: {
+        messageData: [
             {message: 'Hello'},
             {message: 'How are you?'},
             {message: 'Sorry'}
         ]
     },
-    DialogsPage:{
-        MessageData : [
+    DialogsPage: {
+        MessageData: [
             {message: 'Hello'},
             {message: 'How are you?'},
             {message: 'Goodbye'}
         ],
-        nameData : [
+        nameData: [
             {id: 1, name: 'Kirill'},
             {id: 2, name: 'Svetlana'},
             {id: 3, name: 'Andrey'},
@@ -23,5 +22,16 @@ let state = {
     }
 }
 
+export let AddPost = (postElement) => {
+    state.ProfilePage.messageData.push(
+        {message: postElement}
+    )
+}
+
+export let AddMessage = (newMessage) => {
+    state.DialogsPage.MessageData.push(
+        {message: newMessage}
+    )
+}
 
 export default state

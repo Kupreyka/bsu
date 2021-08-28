@@ -23,7 +23,7 @@ const Message = (props) => {
     let MessageRef = React.createRef()
     let AddMessage = () => {
         let message = MessageRef.current.value;
-        alert(message)
+        props.addMessage(message)
     }
 
     return (
