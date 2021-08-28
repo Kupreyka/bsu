@@ -15,9 +15,9 @@ const Messages = (props) => {
 
 const Message = (props) => {
 
-    let MessageElement = props.MessageData.map(el => <Messages message={el.message}/>)
+    let MessageElement = props.DialogsPage.MessageData.map(el => <Messages message={el.message}/>)
 
-    let nameElement = props.nameData.map(el => <Name id={el.id} name={el.name}/>);
+    let nameElement = props.DialogsPage.nameData.map(el => <Name id={el.id} name={el.name}/>);
 
     return (
         <div className={style.dialogs}>
