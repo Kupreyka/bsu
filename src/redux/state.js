@@ -1,3 +1,5 @@
+import {Rerender} from "../Render";
+
 let state = {
     ProfilePage: {
         messageData: [
@@ -25,13 +27,15 @@ let state = {
 export let AddPost = (postElement) => {
     state.ProfilePage.messageData.push(
         {message: postElement}
-    )
+    );
+    Rerender(state)
 }
 
 export let AddMessage = (newMessage) => {
     state.DialogsPage.MessageData.push(
         {message: newMessage}
-    )
+    );
+    Rerender(state)
 }
 
 export default state
