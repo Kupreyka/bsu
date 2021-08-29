@@ -1,12 +1,15 @@
 import {Rerender} from "../Render";
 
+
+
 let state = {
     ProfilePage: {
         messageData: [
             {message: 'Hello'},
             {message: 'How are you?'},
             {message: 'Sorry'}
-        ]
+        ],
+        NewPostText:'Kupreyka'
     },
     DialogsPage: {
         MessageData: [
@@ -24,10 +27,15 @@ let state = {
     }
 }
 
-export let AddPost = (postElement) => {
+export let AddPost = () => {
     state.ProfilePage.messageData.push(
-        {message: postElement}
+        {message: state.ProfilePage.NewPostText}
     );
+    Rerender(state)
+}
+
+export let UpdateNewPostText = (newPostText) => {
+    state.ProfilePage.NewPostText = newPostText
     Rerender(state)
 }
 
@@ -37,5 +45,5 @@ export let AddMessage = (newMessage) => {
     );
     Rerender(state)
 }
-
+window.state = state;
 export default state
