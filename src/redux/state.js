@@ -9,7 +9,7 @@ let state = {
             {message: 'How are you?'},
             {message: 'Sorry'}
         ],
-        NewPostText:'Kupreyka'
+        NewPostText:''
     },
     DialogsPage: {
         MessageData: [
@@ -23,7 +23,8 @@ let state = {
             {id: 3, name: 'Andrey'},
             {id: 4, name: 'Artem'},
             {id: 5, name: 'Alexey'}
-        ]
+        ],
+        NewMessageText: ' '
     }
 }
 
@@ -31,6 +32,7 @@ export let AddPost = () => {
     state.ProfilePage.messageData.push(
         {message: state.ProfilePage.NewPostText}
     );
+    state.ProfilePage.NewPostText = ''
     Rerender(state)
 }
 
@@ -39,10 +41,16 @@ export let UpdateNewPostText = (newPostText) => {
     Rerender(state)
 }
 
-export let AddMessage = (newMessage) => {
+export let AddMessage = () => {
     state.DialogsPage.MessageData.push(
-        {message: newMessage}
+        {message: state.DialogsPage.NewMessageText}
     );
+    state.DialogsPage.NewMessageText = '';
+    Rerender(state)
+}
+
+export let AddNewMessageText = (newMessage) => {
+    state.DialogsPage.NewMessageText = newMessage;
     Rerender(state)
 }
 window.state = state;

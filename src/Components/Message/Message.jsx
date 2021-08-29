@@ -1,6 +1,7 @@
 import style from './Message.module.css'
 import {NavLink} from "react-router-dom";
 import React from "react";
+import {AddNewMessageText} from "../../redux/state";
 
 const Name = (props) => {
     return (
@@ -22,9 +23,12 @@ const Message = (props) => {
 
     let MessageRef = React.createRef()
     let AddMessage = () => {
+        props.addMessage();
+    }
+
+    let onMessageChange = () => {
         let message = MessageRef.current.value;
-        props.addMessage(message);
-        MessageRef.current.value = ''
+        props.AddNewMessageText(message)
     }
 
     return (
@@ -34,7 +38,7 @@ const Message = (props) => {
             </div>
             <div className={style.message}>
                 {MessageElement}
-                <textarea ref={MessageRef} cols="50" rows="10" placeholder='Введите сообщение'></textarea>
+                <textarea ref={MessageRef} cols="50" rows="10" placeholder='Введите сообщение' value={props.DialogsPage.NewMessageText} onChange={onMessageChange}></textarea>
                 <button onClick={AddMessage}>Add message</button>
             </div>
         </div>
