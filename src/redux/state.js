@@ -1,6 +1,6 @@
-import {Rerender} from "../Render";
+let Rerender = () => {
 
-
+}
 
 let state = {
     ProfilePage: {
@@ -54,4 +54,8 @@ export let AddNewMessageText = (newMessage) => {
     Rerender(state)
 }
 window.state = state;
+
+export const subscribe = (observer) => {
+    Rerender = observer
+}
 export default state

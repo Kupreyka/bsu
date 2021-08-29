@@ -1,7 +1,6 @@
 import style from './Message.module.css'
 import {NavLink} from "react-router-dom";
 import React from "react";
-import {AddNewMessageText} from "../../redux/state";
 
 const Name = (props) => {
     return (

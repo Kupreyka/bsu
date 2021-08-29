@@ -1,7 +1,6 @@
 import style from "../Home.module.css";
 import Post from "../Post/Post";
 import React from "react";
-import {UpdateNewPostText} from "../../../redux/state";
 
 const Posts = (props) => {
 
