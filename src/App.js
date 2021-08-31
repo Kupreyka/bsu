@@ -7,7 +7,6 @@ import Menu from "./Components/Sidebar-menu/Menu";
 import {Route} from "react-router-dom";
 import Message from "./Components/Message/Message";
 import Feed from "./Components/Feed/Feed";
-import {AddNewMessageText, UpdateNewPostText} from "./redux/state";
 
 
 function App(props) {
@@ -18,12 +17,10 @@ function App(props) {
                 <Menu/>
                 <div className="components">
                     <Route path='/home' render={() => <Home messageData={props.state.ProfilePage.messageData}
-                                                            addPost={props.addPost}
-                                                            NewPostText={props.state.ProfilePage.NewPostText}
-                                                            UpdateNewPostText={props.UpdateNewPostText}/>}/>
+                                                            dispatch={props.dispatch}
+                                                            NewPostText={props.state.ProfilePage.NewPostText}/>}/>
                     <Route path='/message' render={() => <Message DialogsPage={props.state.DialogsPage}
-                                                                  addMessage={props.addMessage}
-                                                                  AddNewMessageText={props.AddNewMessageText}/>}/>
+                                                                  dispatch={props.dispatch}/>}/>
                     <Route path='/feed' render={() => <Feed/>}/>
                 </div>
             </div>

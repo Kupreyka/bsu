@@ -11,10 +11,7 @@ export let Rerender = (state) => {
     ReactDOM.render(
         <React.StrictMode>
             <BrowserRouter>
-                <App state={state} addPost={store.AddPost.bind(store)}
-                     addMessage={store.AddMessage.bind(store)}
-                     UpdateNewPostText={store.UpdateNewPostText.bind(store)}
-                     AddNewMessageText={store.AddNewMessageText.bind(store)}/>
+                <App state={state} dispatch={store.dispatch.bind(store)}/>
             </BrowserRouter>
         </React.StrictMode>,
         document.getElementById('root')

@@ -8,13 +8,15 @@ const Posts = (props) => {
     let messageElement = props.messageData.map(el => <Post message={el.message}/>)
     let NewPostElement = React.createRef();
     let AddPost = () => {
-        props.addPost()
+        let action = {type:'ADD-POST'}
+        props.dispatch(action)
     }
     let onPostChange = () => {
         let text = NewPostElement.current.value;
-        props.UpdateNewPostText(text)
+        let action = {type:'UPDATE-NEW-POST-TEXT',newPostText: text};
+        props.dispatch(action)
     }
-
+    debugger
     return (
         <div className={style.post}>
             <textarea ref={NewPostElement} cols="50" rows="10" placeholder='Новый пост' value={props.NewPostText} onChange={onPostChange}></textarea>

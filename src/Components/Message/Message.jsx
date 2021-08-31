@@ -22,12 +22,14 @@ const Message = (props) => {
 
     let MessageRef = React.createRef()
     let AddMessage = () => {
-        props.addMessage();
+        let action = {type:'ADD-MESSAGE'}
+        props.dispatch(action);
     }
 
     let onMessageChange = () => {
         let message = MessageRef.current.value;
-        props.AddNewMessageText(message)
+        let action = {type:'ADD-NEW-MESSAGE-TEXT',newMessage: message}
+        props.dispatch(action)
     }
 
     return (
