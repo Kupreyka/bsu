@@ -1,13 +1,12 @@
-
 let store = {
-    _state : {
+    _state: {
         ProfilePage: {
             messageData: [
                 {message: 'Hello'},
                 {message: 'How are you?'},
                 {message: 'Sorry'}
             ],
-            NewPostText:''
+            NewPostText: ''
         },
         DialogsPage: {
             MessageData: [
@@ -25,52 +24,57 @@ let store = {
             NewMessageText: ' '
         }
     },
-    getState(){
+    getState() {
         return this._state
     },
-    _Rerender () {
+    _Rerender() {
 
     },
-    _addPost(){
+    _addPost() {
         this._state.ProfilePage.messageData.push(
             {message: this._state.ProfilePage.NewPostText}
         );
         this._state.ProfilePage.NewPostText = ''
         this._Rerender(this._state)
     },
-    _updateNewPostText(newPostText){
+    _updateNewPostText(newPostText) {
         this._state.ProfilePage.NewPostText = newPostText
         this._Rerender(this._state)
     },
-    _AddMessage () {
+    _AddMessage() {
         this._state.DialogsPage.MessageData.push(
             {message: this._state.DialogsPage.NewMessageText}
         );
         this._state.DialogsPage.NewMessageText = '';
         this._Rerender(this._state)
     },
-    _AddNewMessageText (newMessage) {
+    _AddNewMessageText(newMessage) {
         this._state.DialogsPage.NewMessageText = newMessage;
         this._Rerender(this._state)
     },
-    subscribe (observer) {
+    subscribe(observer) {
         this._Rerender = observer
     },
-    dispatch(action){
-        if(action.type === 'ADD-POST'){
-            this._addPost()
-        }
-        else if (action.type === 'UPDATE-NEW-POST-TEXT'){
-            this._updateNewPostText(action.newPostText)
-        }
-        else if(action.type === 'ADD-MESSAGE'){
-            this._AddMessage()
-        }
-        else if (action.type === 'ADD-NEW-MESSAGE-TEXT'){
-            this._AddNewMessageText(action.newMessage)
+    dispatch(action) {
+        switch (action.type) {
+            case 'ADD-POST':
+                this._addPost()
+                break
+            case 'UPDATE-NEW-POST-TEXT':
+                this._updateNewPostText(action.newPostText)
+                break
+            case  'ADD-MESSAGE' :
+                this._AddMessage()
+                break
+            case  'ADD-NEW-MESSAGE-TEXT':
+                this._AddNewMessageText(action.newMessage)
+                break
+            default:
+                return this._state
         }
     }
 }
+
 
 export default store
 window.store = store;

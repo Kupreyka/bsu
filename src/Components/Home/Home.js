@@ -1,6 +1,6 @@
 import style from './Home.module.css'
 import Posts from "./Posts/Posts";
-import {UpdateNewPostText} from "../../redux/state";
+
 
 const Home = (props) => {
     return (

@@ -4,7 +4,6 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from "react-router-dom";
-import {AddMessage, AddPost, subscribe, UpdateNewPostText} from "./redux/state";
 import store from "./redux/state";
 
 export let Rerender = (state) => {
@@ -19,7 +18,7 @@ export let Rerender = (state) => {
 }
 Rerender(store.getState())
 
-    store.subscribe(Rerender)
+store.subscribe(Rerender)
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
