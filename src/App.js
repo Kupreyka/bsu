@@ -10,22 +10,26 @@ import Feed from "./Components/Feed/Feed";
 import {AddNewMessageText, UpdateNewPostText} from "./redux/state";
 
 
-
 function App(props) {
-  return (
-    <div className="App">
-        <Header/>
-        <div className='main'>
-            <Menu/>
-            <div className="components">
-                <Route path='/home' render={()=><Home messageData={props.state.ProfilePage.messageData} addPost={props.addPost} NewPostText={props.state.ProfilePage.NewPostText} UpdateNewPostText={props.UpdateNewPostText}/>}/>
-                <Route path='/message' render={()=><Message DialogsPage={props.state.DialogsPage} addMessage={props.addMessage} AddNewMessageText={AddNewMessageText}/>}/>
-                <Route path='/feed' render={()=><Feed/>}/>
+    return (
+        <div className="App">
+            <Header/>
+            <div className='main'>
+                <Menu/>
+                <div className="components">
+                    <Route path='/home' render={() => <Home messageData={props.state.ProfilePage.messageData}
+                                                            addPost={props.addPost}
+                                                            NewPostText={props.state.ProfilePage.NewPostText}
+                                                            UpdateNewPostText={props.UpdateNewPostText}/>}/>
+                    <Route path='/message' render={() => <Message DialogsPage={props.state.DialogsPage}
+                                                                  addMessage={props.addMessage}
+                                                                  AddNewMessageText={props.AddNewMessageText}/>}/>
+                    <Route path='/feed' render={() => <Feed/>}/>
+                </div>
             </div>
+            <Footer/>
         </div>
-        <Footer/>
-    </div>
-  );
+    );
 }
 
 export default App;
