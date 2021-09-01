@@ -1,3 +1,6 @@
+import DialogsPageReducer from "./Dialogs-page-reducer";
+import ProfilePageReducer from "./Profile-page-reducer";
+
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 const ADD_MESSAGE = 'ADD-MESSAGE';
@@ -35,48 +38,14 @@ let store = {
     _Rerender() {
 
     },
-    _addPost() {
-        this._state.ProfilePage.messageData.push(
-            {message: this._state.ProfilePage.NewPostText}
-        );
-        this._state.ProfilePage.NewPostText = ''
-        this._Rerender(this._state)
-    },
-    _updateNewPostText(newPostText) {
-        this._state.ProfilePage.NewPostText = newPostText
-        this._Rerender(this._state)
-    },
-    _AddMessage() {
-        this._state.DialogsPage.MessageData.push(
-            {message: this._state.DialogsPage.NewMessageText}
-        );
-        this._state.DialogsPage.NewMessageText = '';
-        this._Rerender(this._state)
-    },
-    _AddNewMessageText(newMessage) {
-        this._state.DialogsPage.NewMessageText = newMessage;
-        this._Rerender(this._state)
-    },
     subscribe(observer) {
         this._Rerender = observer
     },
     dispatch(action) {
-        switch (action.type) {
-            case ADD_POST:
-                this._addPost()
-                break
-            case UPDATE_NEW_POST_TEXT:
-                this._updateNewPostText(action.newPostText)
-                break
-            case  ADD_MESSAGE :
-                this._AddMessage()
-                break
-            case  ADD_NEW_MESSAGE_TEXT:
-                this._AddNewMessageText(action.newMessage)
-                break
-            default:
-                return this._state
-        }
+        this._state.DialogsPage = DialogsPageReducer(this._state.DialogsPage, action)
+        this._state.ProfilePage = ProfilePageReducer(this._state.ProfilePage, action)
+        this._Rerender(this._state)
+
     }
 
 }
