@@ -1,6 +1,7 @@
 import style from './Message.module.css'
 import {NavLink} from "react-router-dom";
 import React from "react";
+import {AddMessageActionCreator, AddNewMessageTextActionCreator} from "../../redux/state";
 
 const Name = (props) => {
     return (
@@ -22,14 +23,12 @@ const Message = (props) => {
 
     let MessageRef = React.createRef()
     let AddMessage = () => {
-        let action = {type:'ADD-MESSAGE'}
-        props.dispatch(action);
+        props.dispatch(AddMessageActionCreator());
     }
 
     let onMessageChange = () => {
         let message = MessageRef.current.value;
-        let action = {type:'ADD-NEW-MESSAGE-TEXT',newMessage: message}
-        props.dispatch(action)
+        props.dispatch(AddNewMessageTextActionCreator(message))
     }
 
     return (
