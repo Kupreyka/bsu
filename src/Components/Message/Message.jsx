@@ -1,7 +1,7 @@
 import style from './Message.module.css'
 import {NavLink} from "react-router-dom";
 import React from "react";
-import {AddMessageActionCreator, AddNewMessageTextActionCreator} from "../../redux/state";
+import {AddMessageActionCreator, AddNewMessageTextActionCreator} from "../../redux/Dialogs-page-reducer";
 
 const Name = (props) => {
     return (
