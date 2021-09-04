@@ -1,5 +1,5 @@
 import style from './Home.module.css'
-import Posts from "./Posts/Posts";
+import PostsContainer from "./Posts/PostsContainrt";
 
 
 const Home = (props) => {
@@ -7,7 +7,7 @@ const Home = (props) => {
         <div className={style.home}>
             <div>avatar</div>
             <div>info</div>
-            <Posts messageData={props.messageData} dispatch={props.dispatch} NewPostText={props.NewPostText}/>
+            <PostsContainer  store={props.store}/>
         </div>
     )
 }

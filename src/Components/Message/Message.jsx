@@ -17,18 +17,18 @@ const Messages = (props) => {
 
 const Message = (props) => {
 
-    let MessageElement = props.DialogsPage.MessageData.map(el => <Messages message={el.message}/>)
+    let MessageElement = props.state.MessageData.map(el => <Messages message={el.message}/>)
 
-    let nameElement = props.DialogsPage.nameData.map(el => <Name id={el.id} name={el.name}/>);
+    let nameElement = props.state.nameData.map(el => <Name id={el.id} name={el.name}/>);
 
     let MessageRef = React.createRef()
     let AddMessage = () => {
-        props.dispatch(AddMessageActionCreator());
+        props.AddMessage();
     }
 
     let onMessageChange = () => {
         let message = MessageRef.current.value;
-        props.dispatch(AddNewMessageTextActionCreator(message))
+        props.UpdateMessageText(message)
     }
 
     return (
@@ -38,7 +38,7 @@ const Message = (props) => {
             </div>
             <div className={style.message}>
                 {MessageElement}
-                <textarea ref={MessageRef} cols="50" rows="10" placeholder='Введите сообщение' value={props.DialogsPage.NewMessageText} onChange={onMessageChange}></textarea>
+                <textarea ref={MessageRef} cols="50" rows="10" placeholder='Введите сообщение' value={props.state.NewMessageText} onChange={onMessageChange}></textarea>
                 <button onClick={AddMessage}>Add message</button>
             </div>
         </div>
