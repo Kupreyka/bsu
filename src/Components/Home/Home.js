@@ -7,7 +7,7 @@ const Home = (props) => {
         <div className={style.home}>
             <div>avatar</div>
             <div>info</div>
-            <PostsContainer  store={props.store}/>
+            <PostsContainer  />
         </div>
     )
 }

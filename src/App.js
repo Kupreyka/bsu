@@ -17,8 +17,8 @@ function App(props) {
             <div className='main'>
                 <Menu/>
                 <div className="components">
-                    <Route path='/home' render={() => <Home store={props.store}/>}/>
-                    <Route path='/message' render={() => <MessageContainer store={props.store}/>}/>
+                    <Route path='/home' render={() => <Home />}/>
+                    <Route path='/message' render={() => <MessageContainer />}/>
                     <Route path='/feed' render={() => <Feed/>}/>
                 </div>
             </div>
