@@ -1,10 +1,10 @@
 import React from "react";
 import {AddMessageActionCreator, AddNewMessageTextActionCreator} from "../../redux/Dialogs-page-reducer";
 import Message from "./Message";
-import StoreContext from "../../StoreContext";
+import {connect} from "react-redux";
 
 
-const MessageContainer = (props) => {
+/*const MessageContainer = (props) => {
 
     return (
         <StoreContext.Consumer>
@@ -21,6 +21,23 @@ const MessageContainer = (props) => {
             }}
         </StoreContext.Consumer>
     )
+}*/
+
+let mapStateToProps = (state) => {
+    return {
+        state: state.DialogsPage
+    }
 }
+
+let mapDispatchToProps = (dispatch) => {
+    return {
+        AddMessage: () => {dispatch(AddMessageActionCreator())},
+        UpdateMessageText: (message)=>{dispatch(AddNewMessageTextActionCreator(message))}
+    }
+}
+
+
+const MessageContainer = connect(mapStateToProps, mapDispatchToProps)(Message)
+
 
 export default MessageContainer
