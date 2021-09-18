@@ -11,7 +11,7 @@ const Posts = (props) => {
     }
     let onPostChange = () => {
         let text = NewPostElement.current.value;
-        props.UpadateNewPostText(text)
+        props.UpdateNewPostText(text)
     }
     return (
         <div className={style.post}>
