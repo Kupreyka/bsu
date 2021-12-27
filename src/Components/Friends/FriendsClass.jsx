@@ -24,7 +24,6 @@ export default class FriendsClass extends React.Component {
     render() {
         return (
             <div>
-                <div>{this.state.users.map(user => <p>{user.address.city}</p>)}</div>
                 <ul>
                     {this.state.users.map(user => <li>{user.name}</li>)}
                 </ul>
