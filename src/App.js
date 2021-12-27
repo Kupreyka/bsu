@@ -8,6 +8,7 @@ import {Route} from "react-router-dom";
 import Message from "./Components/Message/Message";
 import Feed from "./Components/Feed/Feed";
 import MessageContainer from "./Components/Message/MessgeContainer";
+import FriendsClass from "./Components/Friends/FriendsClass";
 
 
 function App(props) {
@@ -20,6 +21,7 @@ function App(props) {
                     <Route path='/home' render={() => <Home />}/>
                     <Route path='/message' render={() => <MessageContainer />}/>
                     <Route path='/feed' render={() => <Feed/>}/>
+                    <Route path='/friends' render={() => <FriendsClass/>}/>
                 </div>
             </div>
             <Footer/>

@@ -8,6 +8,7 @@ const Menu = () => {
             <NavLink to='/home' activeClassName={style.active}>Home</NavLink>
             <NavLink to="/message" activeClassName={style.active}>Message</NavLink>
             <NavLink to="/feed" activeClassName={style.active}>Feed</NavLink>
+            <NavLink to="/friends" activeClassName={style.active}>Friends</NavLink>
         </div>
     )
 }
