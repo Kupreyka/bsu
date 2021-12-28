@@ -3,10 +3,7 @@ const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET_USERS';
 
 let initialState = {
-    users:[
-        {id:1, followed:false, photoUrl:'http://cdn.onlinewebfonts.com/svg/img_569204.png', fullName: 'Kirill', status:'I am a boss', location:{city:'Minsk', country:'Belarus'}},
-        {id:2, followed:true, photoUrl:'http://cdn.onlinewebfonts.com/svg/img_569204.png', fullName: 'Kirill', status:'I am a boss', location:{city:'Minsk', country:'Belarus'}}
-    ]
+    users:[ ]
 }
 
 
@@ -37,7 +34,7 @@ const friendsReducer = (state = initialState, action) => {
         case SET_USERS:
             return {
                 ...state,
-                users: [...state.users, ...action.users]
+                users: [/*...state.users*/, ...action.users]
             }
         default:
             return state;
