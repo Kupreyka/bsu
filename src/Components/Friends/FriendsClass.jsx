@@ -1,6 +1,7 @@
 import React from "react";
 import defPhoto from "../../assets/default-photo.png";
 import axios from "axios";
+import style from './css/friendPage.module.css'
 
 export default class Friends extends React.Component {
     constructor(props) {
@@ -8,7 +9,19 @@ export default class Friends extends React.Component {
     }
 
     componentDidMount() {
-        axios.get('https://social-network.samuraijs.com/api/1.0/users')
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.activePageUser}&count=${this.props.pageUser}`)
+            .then(res => {
+                const users = res.data.items;
+                this.props.setUsers(users);
+                const totalUsers = res.data.totalCount;
+                this.props.setTotalUsersCount(totalUsers)
+
+            })
+    };
+
+    onPageChange = (activePage) => {
+        this.props.setActivePageUser(activePage);
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${activePage}&count=${this.props.pageUser}`)
             .then(res => {
                 const users = res.data.items;
                 this.props.setUsers(users)
@@ -16,9 +29,14 @@ export default class Friends extends React.Component {
     }
 
     render() {
+        let pageCount = Math.ceil(this.props.totalCountUsers / this.props.pageUser)
+        let pages = [];
+        for (let i = 1; i <= pageCount; i++) {
+            pages.push(i)
+        }
+
         return (
             <div>
-
                 {this.props.users.map(user => <div key={user.id}>
                     <div><img
                         src={user.photos.small != null ? user.photos.small : defPhoto}/>
@@ -40,6 +58,11 @@ export default class Friends extends React.Component {
                 <div>{user.location.city}</div>
                 <div>{user.location.country}</div>*/}
                 </div>)}
+                {pages.map(activePage => {
+                    return <span onClick={() => {
+                        this.onPageChange(activePage)
+                    }} className={`${style.default} ${this.props.activePageUser === activePage && style.active}`}>{activePage}</span>
+                })}
             </div>
         )
     }
