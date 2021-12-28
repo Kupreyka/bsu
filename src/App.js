@@ -8,7 +8,7 @@ import {Route} from "react-router-dom";
 import Message from "./Components/Message/Message";
 import Feed from "./Components/Feed/Feed";
 import MessageContainer from "./Components/Message/MessgeContainer";
-import FriendsClass from "./Components/Friends/FriendsClass";
+import FriendsClass from "./Components/Friends/FriendsContainer";
 
 
 function App(props) {

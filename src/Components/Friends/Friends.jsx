@@ -1,4 +1,5 @@
 import axios from "axios";
+import defPhoto from '../../assets/default-photo.png'
 
 const Friends = (props) => {
     let getUsers = () => {
@@ -19,7 +20,7 @@ const Friends = (props) => {
             <button onClick={getUsers}>getUsers</button>
             {props.users.map(user => <div key={user.id}>
                 <div><img
-                    src={user.photos.small != null ? user.photos.small : 'http://cdn.onlinewebfonts.com/svg/img_569204.png'}/>
+                    src={user.photos.small != null ? user.photos.small : defPhoto}/>
                 </div>
                 <div>
                     {user.followed
