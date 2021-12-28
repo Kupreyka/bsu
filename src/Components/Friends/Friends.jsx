@@ -1,20 +1,26 @@
 import axios from "axios";
 
 const Friends = (props) => {
-
-    if (props.users.length === 0) {
-        axios.get('https://social-network.samuraijs.com/api/1.0/users')
-            .then(res => {
-                const users = res.data.items;
-                props.setUsers(users)
-            })
+    let getUsers = () => {
+        if (props.users.length === 0) {
+            axios.get('https://social-network.samuraijs.com/api/1.0/users')
+                .then(res => {
+                    const users = res.data.items;
+                    console.log(users)
+                    props.setUsers(users)
+                })
+        }
     }
 
 
     return (
+
         <div>
+            <button onClick={getUsers}>getUsers</button>
             {props.users.map(user => <div key={user.id}>
-                <div><img src={user.photos.small != null ? user.photos.small : 'http://cdn.onlinewebfonts.com/svg/img_569204.png'}/></div>
+                <div><img
+                    src={user.photos.small != null ? user.photos.small : 'http://cdn.onlinewebfonts.com/svg/img_569204.png'}/>
+                </div>
                 <div>
                     {user.followed
                         ? <button onClick={() => {
