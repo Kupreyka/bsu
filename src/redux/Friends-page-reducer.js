@@ -4,7 +4,8 @@ const SET_USERS = 'SET_USERS';
 
 let initialState = {
     users:[
-        /*{id:1, followed:false, fullName: 'Kirill', status:'I am a boss', location:{city:'Minsk', country:'Belarus'}}*/
+        {id:1, followed:false, photoUrl:'http://cdn.onlinewebfonts.com/svg/img_569204.png', fullName: 'Kirill', status:'I am a boss', location:{city:'Minsk', country:'Belarus'}},
+        {id:2, followed:true, photoUrl:'http://cdn.onlinewebfonts.com/svg/img_569204.png', fullName: 'Kirill', status:'I am a boss', location:{city:'Minsk', country:'Belarus'}}
     ]
 }
 
@@ -16,21 +17,21 @@ const friendsReducer = (state = initialState, action) => {
         case FOLLOW:
             return {
                 ...state,
-                users: state.users.map(u => {
-                    if (u === action.userId){
-                        return {...u, followed: true}
+                users: state.users.map(user => {
+                    if (user.id === action.userId){
+                        return {...user, followed: true}
                     }
-                    return u;
+                    return user;
                 })
             }
         case UNFOLLOW:
             return {
                 ...state,
-                users: state.users.map(u => {
-                    if (u === action.userId){
-                        return {...u, followed: false}
+                users: state.users.map(user => {
+                    if (user.id === action.userId){
+                        return {...user, followed: false}
                     }
-                    return u;
+                    return user;
                 })
             }
         case SET_USERS:

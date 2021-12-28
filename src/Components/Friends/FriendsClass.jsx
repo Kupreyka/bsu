@@ -1,33 +1,28 @@
 import React from "react";
+import {connect} from "react-redux";
 import Friends from "./Friends";
-import axios from "axios";
+import {followAC, setUsersAC, unfollowAC} from "../../redux/Friends-page-reducer";
 
 
-export default class FriendsClass extends React.Component {
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            users: []
-        }
-    }
-
-    componentDidMount() {
-        axios.get('https://jsonplaceholder.typicode.com/users')
-            .then(res => {
-                const users = res.data;
-                this.setState({users})
-            })
-    }
-
-
-    render() {
-        return (
-            <div>
-                <ul>
-                    {this.state.users.map(user => <li>{user.name}</li>)}
-                </ul>
-            </div>
-        )
+let mapDispatchToProps = (state) => {
+    return {
+        users: state.FriendsPage.users
     }
 }
+
+let mapStateToProps = (dispatch) => {
+    return {
+        follow: (userId)=>{
+            dispatch(followAC(userId));
+        },
+        unfollow: (userId)=>{
+            dispatch(unfollowAC(userId));
+        },
+        setUsers: (users)=>{
+            dispatch(setUsersAC(users))
+        }
+    }
+}
+
+
+export default connect(mapDispatchToProps,mapStateToProps)(Friends);
