@@ -2,14 +2,10 @@ import React from "react";
 import {connect} from "react-redux";
 
 import {
-    followAC,
-    setActivePageUserAC, setTotalPageCountAC,
-    setUsersAC, toggleIsFetchingAC,
-    unfollowAC
+    follow, setActivePageUser, setTotalUsersCount, setUsers, toggleIsFetching, unfollow
 } from "../../redux/Friends-page-reducer";
 import Friends from "./Friends";
 import axios from "axios";
-import preloader from '../../assets/preloader.svg'
 import Preloader from "./Preloader/Preloader";
 
 
@@ -44,21 +40,21 @@ class FriendsContainer extends React.Component {
 
     render() {
         return (<div>
-                <Preloader isFetching={this.props.isFetching}/>
-                <Friends
-                    totalCountUsers={this.props.totalCountUsers}
-                    pageUser={this.props.pageUser}
-                    unfollow={this.props.unfollow}
-                    follow={this.props.follow}
-                    users={this.props.users}
-                    activePageUser={this.props.activePageUser}
-                    onPageChange={this.onPageChange}
-                />
+            <Preloader isFetching={this.props.isFetching}/>
+            <Friends
+                totalCountUsers={this.props.totalCountUsers}
+                pageUser={this.props.pageUser}
+                unfollow={this.props.unfollow}
+                follow={this.props.follow}
+                users={this.props.users}
+                activePageUser={this.props.activePageUser}
+                onPageChange={this.onPageChange}
+            />
         </div>)
     }
 }
 
-let mapDispatchToProps = (state) => {
+let mapStateToProps = (state) => {
     return {
         users: state.FriendsPage.users,
         totalCountUsers: state.FriendsPage.totalCountUsers,
@@ -68,28 +64,11 @@ let mapDispatchToProps = (state) => {
     }
 }
 
-let mapStateToProps = (dispatch) => {
-    return {
-        follow: (userId) => {
-            dispatch(followAC(userId));
-        },
-        unfollow: (userId) => {
-            dispatch(unfollowAC(userId));
-        },
-        setUsers: (users) => {
-            dispatch(setUsersAC(users))
-        },
-        setActivePageUser: (pageNumber) => {
-            dispatch(setActivePageUserAC(pageNumber))
-        },
-        setTotalUsersCount: (totalCount) => {
-            dispatch(setTotalPageCountAC(totalCount))
-        },
-        toggleIsFetching: (isFetching) => {
-            dispatch(toggleIsFetchingAC(isFetching))
-        }
-    }
-}
-
-
-export default connect(mapDispatchToProps, mapStateToProps)(FriendsContainer);
+export default connect(mapStateToProps, {
+    follow,
+    unfollow,
+    setUsers,
+    setActivePageUser,
+    setTotalUsersCount,
+    toggleIsFetching
+})(FriendsContainer);
