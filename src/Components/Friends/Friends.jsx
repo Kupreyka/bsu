@@ -12,6 +12,12 @@ const Friends = (props) => {
 
     return (
         <div>
+            {pages.map(activePage => {
+                return <span onClick={() => {
+                    props.onPageChange(activePage)
+                }}
+                             className={`${style.default} ${props.activePageUser === activePage && style.active}`}>{activePage}</span>
+            })}
             {props.users.map(user => <div key={user.id}>
                 <div><img
                     src={user.photos.small != null ? user.photos.small : defPhoto}/>
@@ -33,12 +39,7 @@ const Friends = (props) => {
                 <div>{user.location.city}</div>
                 <div>{user.location.country}</div>*/}
             </div>)}
-            {pages.map(activePage => {
-                return <span onClick={() => {
-                    props.onPageChange(activePage)
-                }}
-                             className={`${style.default} ${props.activePageUser === activePage && style.active}`}>{activePage}</span>
-            })}
+
         </div>
     )
 }
