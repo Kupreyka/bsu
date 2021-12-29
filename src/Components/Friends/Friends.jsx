@@ -1,23 +1,17 @@
-import axios from "axios";
-import defPhoto from '../../assets/default-photo.png'
+import React from "react";
+import defPhoto from "../../assets/default-photo.png";
+import style from './css/friendPage.module.css'
 
 const Friends = (props) => {
-    let getUsers = () => {
-        if (props.users.length === 0) {
-            axios.get('https://social-network.samuraijs.com/api/1.0/users')
-                .then(res => {
-                    const users = res.data.items;
-                    console.log(users)
-                    props.setUsers(users)
-                })
-        }
+
+    let pageCount = Math.ceil(props.totalCountUsers / props.pageUser)
+    let pages = [];
+    for (let i = 1; i <= pageCount; i++) {
+        pages.push(i)
     }
 
-
     return (
-
         <div>
-            <button onClick={getUsers}>getUsers</button>
             {props.users.map(user => <div key={user.id}>
                 <div><img
                     src={user.photos.small != null ? user.photos.small : defPhoto}/>
@@ -39,8 +33,14 @@ const Friends = (props) => {
                 <div>{user.location.city}</div>
                 <div>{user.location.country}</div>*/}
             </div>)}
+            {pages.map(activePage => {
+                return <span onClick={() => {
+                    props.onPageChange(activePage)
+                }}
+                             className={`${style.default} ${props.activePageUser === activePage && style.active}`}>{activePage}</span>
+            })}
         </div>
     )
 }
 
-export default Friends;
+export default Friends
