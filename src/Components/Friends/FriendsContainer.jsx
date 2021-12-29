@@ -10,6 +10,7 @@ import {
 import Friends from "./Friends";
 import axios from "axios";
 import preloader from '../../assets/preloader.svg'
+import Preloader from "./Preloader/Preloader";
 
 
 class FriendsContainer extends React.Component {
@@ -43,7 +44,7 @@ class FriendsContainer extends React.Component {
 
     render() {
         return (<div>
-            {this.props.isFetching ? <img src={preloader} /> : null}
+                <Preloader isFetching={this.props.isFetching}/>
                 <Friends
                     totalCountUsers={this.props.totalCountUsers}
                     pageUser={this.props.pageUser}
