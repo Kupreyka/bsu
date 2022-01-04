@@ -1,12 +1,12 @@
 import style from './Home.module.css'
 import PostsContainer from "./Posts/PostsContainrt";
+import HomeInfo from "./HomeInfo/HomeInfo";
 
 
 const Home = (props) => {
     return (
         <div className={style.home}>
-            <div>avatar</div>
-            <div>info</div>
+            <HomeInfo profile={props.profile}/>
             <PostsContainer  />
         </div>
     )

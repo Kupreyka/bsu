@@ -54,15 +54,15 @@ class FriendsContainer extends React.Component {
     }
 }
 
-let mapStateToProps = (state) => {
-    return {
+let mapStateToProps = (state) => (
+    {
         users: state.FriendsPage.users,
         totalCountUsers: state.FriendsPage.totalCountUsers,
         pageUser: state.FriendsPage.pageUser,
         activePageUser: state.FriendsPage.activePageUser,
         isFetching: state.FriendsPage.isFetching
     }
-}
+)
 
 export default connect(mapStateToProps, {
     follow,

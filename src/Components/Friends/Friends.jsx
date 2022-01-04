@@ -1,6 +1,7 @@
 import React from "react";
 import defPhoto from "../../assets/default-photo.png";
 import style from './css/friendPage.module.css'
+import {NavLink} from "react-router-dom";
 
 const Friends = (props) => {
 
@@ -18,9 +19,11 @@ const Friends = (props) => {
                 }}
                              className={`${style.default} ${props.activePageUser === activePage && style.active}`}>{activePage}</span>
             })}
-            {props.users.map(user => <div key={user.id}>
-                <div><img
+            {props.users.map(user => <div key={user.id}><div>
+                <NavLink to={/home/ + user.id}>
+                    <img
                     src={user.photos.small != null ? user.photos.small : defPhoto}/>
+                </NavLink>
                 </div>
                 <div>
                     {user.followed

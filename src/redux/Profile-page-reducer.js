@@ -1,5 +1,6 @@
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+const SET_PROFILE_PAGE = 'SET_PROFILE_PAGE';
 
 
 let initialState = {
@@ -8,7 +9,8 @@ let initialState = {
         {message: 'How are you?'},
         {message: 'Sorry'}
     ],
-    NewPostText: ''
+    NewPostText: '',
+    profile: null
 }
 
 const ProfilePageReducer = (state = initialState, action) => {
@@ -28,6 +30,11 @@ const ProfilePageReducer = (state = initialState, action) => {
             stateCopy.NewPostText = action.newPostText
             return stateCopy
         }
+        case SET_PROFILE_PAGE:{
+            return {
+                ...state, profile: action.profile
+            }
+        }
         default:
             return state
     }
@@ -38,5 +45,9 @@ export const AddPostActionCreator = () => {
 }
 export const UpdateNewPostTextActionCreator =(text) => {
     return {type:UPDATE_NEW_POST_TEXT,newPostText: text}
+}
+
+export const setProfile = (profile) => {
+  return {type:SET_PROFILE_PAGE, profile}
 }
 export default ProfilePageReducer
