@@ -14,7 +14,7 @@ let initialState = {
 }
 
 
-const friendsReducer = (state = initialState, action) => {
+const FriendsReducer = (state = initialState, action) => {
 
 
     switch (action.type) {
@@ -70,4 +70,4 @@ export const setActivePageUser = (activePageUser) => ({type: ACTIVE_PAGE_USER, a
 export const setTotalUsersCount = (totalCountUsers) => ({type: SET_TOTAL_COUNT_USERS, totalCountUsers});
 export const toggleIsFetching = (isFetching) => ({type:TOGGLE_IS_FETCHING, isFetching})
 
-export default friendsReducer;
+export default FriendsReducer;
