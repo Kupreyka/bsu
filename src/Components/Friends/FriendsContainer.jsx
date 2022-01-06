@@ -16,7 +16,9 @@ class FriendsContainer extends React.Component {
 
     componentDidMount() {
         this.props.toggleIsFetching(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.activePageUser}&count=${this.props.pageUser}`)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.activePageUser}&count=${this.props.pageUser}`,{
+            withCredentials:true
+        })
             .then(res => {
                 const users = res.data.items;
                 this.props.setUsers(users);
@@ -30,7 +32,9 @@ class FriendsContainer extends React.Component {
     onPageChange = (activePage) => {
         this.props.toggleIsFetching(true)
         this.props.setActivePageUser(activePage);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${activePage}&count=${this.props.pageUser}`)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${activePage}&count=${this.props.pageUser}`,{
+            withCredentials: true
+        })
             .then(res => {
                 const users = res.data.items;
                 this.props.setUsers(users);
