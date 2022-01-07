@@ -7,6 +7,7 @@ import {
 import Friends from "./Friends";
 import axios from "axios";
 import Preloader from "./Preloader/Preloader";
+import {UsersAPI} from "../../API/Api";
 
 
 class FriendsContainer extends React.Component {
@@ -16,13 +17,11 @@ class FriendsContainer extends React.Component {
 
     componentDidMount() {
         this.props.toggleIsFetching(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.activePageUser}&count=${this.props.pageUser}`,{
-            withCredentials:true
-        })
+        UsersAPI.getUser(this.props.activePageUser, this.props.pageUser)
             .then(res => {
-                const users = res.data.items;
+                const users = res.items;
                 this.props.setUsers(users);
-                const totalUsers = res.data.totalCount;
+                const totalUsers = res.totalCount;
                 this.props.setTotalUsersCount(totalUsers)
                 this.props.toggleIsFetching(false)
 
@@ -32,11 +31,9 @@ class FriendsContainer extends React.Component {
     onPageChange = (activePage) => {
         this.props.toggleIsFetching(true)
         this.props.setActivePageUser(activePage);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${activePage}&count=${this.props.pageUser}`,{
-            withCredentials: true
-        })
+        UsersAPI.getUser(this.props.activePageUser, this.props.pageUser)
             .then(res => {
-                const users = res.data.items;
+                const users = res.items;
                 this.props.setUsers(users);
                 this.props.toggleIsFetching(false)
             })

@@ -40,7 +40,6 @@ const Friends = (props) => {
                                     if (response.data.resultCode == 0) {
                                         props.unfollow(user.id)
                                     }
-                                    console.log(response.data.resultCode)
                                 })
 
 
