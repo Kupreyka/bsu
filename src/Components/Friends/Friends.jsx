@@ -3,6 +3,7 @@ import defPhoto from "../../assets/default-photo.png";
 import style from './css/friendPage.module.css'
 import {NavLink} from "react-router-dom";
 import axios from "axios";
+import {UsersAPI} from "../../API/Api";
 
 const Friends = (props) => {
 
@@ -30,14 +31,9 @@ const Friends = (props) => {
                 <div>
                     {user.followed
                         ? <button onClick={() => {
-                            axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${user.id}`, {
-                                withCredentials: true,
-                                headers: {
-                                    'API-KEY': '53f4be4b-8bc9-4c00-b66d-671af61de6ae'
-                                }
-                            })
+                            UsersAPI.unfollow(user.id)
                                 .then(response => {
-                                    if (response.data.resultCode == 0) {
+                                    if (response.resultCode == 0) {
                                         props.unfollow(user.id)
                                     }
                                 })
@@ -45,14 +41,9 @@ const Friends = (props) => {
 
                         }}>Unfollow</button>
                         : <button onClick={() => {
-                            axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${user.id}`, {}, {
-                                withCredentials: true,
-                                headers: {
-                                    'API-KEY': '53f4be4b-8bc9-4c00-b66d-671af61de6ae'
-                                }
-                            })
+                            UsersAPI.follow(user.id)
                                 .then(response => {
-                                    if (response.data.resultCode == 0) {
+                                    if (response.resultCode == 0) {
                                         props.follow(user.id)
                                     }
                                 })

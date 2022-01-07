@@ -18,10 +18,10 @@ class FriendsContainer extends React.Component {
     componentDidMount() {
         this.props.toggleIsFetching(true)
         UsersAPI.getUser(this.props.activePageUser, this.props.pageUser)
-            .then(res => {
-                const users = res.items;
+            .then(response => {
+                const users = response.items;
                 this.props.setUsers(users);
-                const totalUsers = res.totalCount;
+                const totalUsers = response.totalCount;
                 this.props.setTotalUsersCount(totalUsers)
                 this.props.toggleIsFetching(false)
 
@@ -32,8 +32,8 @@ class FriendsContainer extends React.Component {
         this.props.toggleIsFetching(true)
         this.props.setActivePageUser(activePage);
         UsersAPI.getUser(this.props.activePageUser, this.props.pageUser)
-            .then(res => {
-                const users = res.items;
+            .then(response => {
+                const users = response.items;
                 this.props.setUsers(users);
                 this.props.toggleIsFetching(false)
             })
