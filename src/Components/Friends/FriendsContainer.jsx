@@ -5,7 +5,6 @@ import {
     follow, setActivePageUser, setTotalUsersCount, setUsers, toggleIsFetching, unfollow
 } from "../../redux/Friends-page-reducer";
 import Friends from "./Friends";
-import axios from "axios";
 import Preloader from "./Preloader/Preloader";
 import {UsersAPI} from "../../API/Api";
 
@@ -41,16 +40,14 @@ class FriendsContainer extends React.Component {
 
     render() {
         return (<div>
-            <Preloader isFetching={this.props.isFetching}/>
-            <Friends
-                totalCountUsers={this.props.totalCountUsers}
+            <Preloader /*isFetching={this.props.isFetching}*/ {...this.props}/>
+            <Friends {...this.props} onPageChange={this.onPageChange}
+                /*totalCountUsers={this.props.totalCountUsers}
                 pageUser={this.props.pageUser}
                 unfollow={this.props.unfollow}
                 follow={this.props.follow}
                 users={this.props.users}
-                activePageUser={this.props.activePageUser}
-                onPageChange={this.onPageChange}
-            />
+                activePageUser={this.props.activePageUser}*/ />
         </div>)
     }
 }
