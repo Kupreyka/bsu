@@ -2,7 +2,6 @@ import React from "react";
 import defPhoto from "../../assets/default-photo.png";
 import style from './css/friendPage.module.css'
 import {NavLink} from "react-router-dom";
-import axios from "axios";
 import {UsersAPI} from "../../API/Api";
 
 const Friends = (props) => {
@@ -30,22 +29,26 @@ const Friends = (props) => {
                 </div>
                 <div>
                     {user.followed
-                        ? <button onClick={() => {
+                        ? <button disabled={props.followingInProgress.some(id => id === user.id)} onClick={() => {
+                            props.toggleFollowingProgress(true, user.id)
                             UsersAPI.unfollow(user.id)
                                 .then(response => {
                                     if (response.resultCode == 0) {
                                         props.unfollow(user.id)
                                     }
+                                    props.toggleFollowingProgress(false, user.id)
                                 })
 
 
                         }}>Unfollow</button>
-                        : <button onClick={() => {
+                        : <button disabled={props.followingInProgress.some(id => id === user.id)} onClick={() => {
+                            props.toggleFollowingProgress(true, user.id)
                             UsersAPI.follow(user.id)
                                 .then(response => {
                                     if (response.resultCode == 0) {
                                         props.follow(user.id)
                                     }
+                                    props.toggleFollowingProgress(false, user.id)
                                 })
 
                         }}>follow</button>
