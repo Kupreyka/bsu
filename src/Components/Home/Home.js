@@ -6,10 +6,6 @@ import {Redirect} from "react-router-dom";
 
 const Home = (props) => {
 
-    if (!props.isAuth) {
-        return <Redirect to={'/login'}/>
-    }
-
     return (
         <div className={style.home}>
             <HomeInfo profile={props.profile}/>

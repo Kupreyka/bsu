@@ -10,7 +10,8 @@ import {
 } from "../../redux/Friends-page-reducer";
 import Friends from "./Friends";
 import Preloader from "./Preloader/Preloader";
-import {Redirect} from "react-router-dom";
+import {WithAuthRedirect} from "../../hoc/withAuthRedirect";
+import {compose} from "redux";
 
 
 class FriendsContainer extends React.Component {
@@ -23,18 +24,13 @@ class FriendsContainer extends React.Component {
     };
 
     onPageChange = (activePageSucces) => {
-        this.props.activePage(activePageSucces,this.props.activePageUser,this.props.pageUser)
+        this.props.activePage(activePageSucces, this.props.activePageUser, this.props.pageUser)
     }
 
     render() {
-
-        if(!this.props.isAuth){
-            return <Redirect to={'/login'}/>
-        }
-
         return (<div>
             <Preloader /*isFetching={this.props.isFetching}*/ {...this.props}/>
-            <Friends {...this.props} onPageChange={this.onPageChange} />
+            <Friends {...this.props} onPageChange={this.onPageChange}/>
         </div>)
     }
 }
@@ -46,15 +42,18 @@ let mapStateToProps = (state) => (
         pageUser: state.FriendsPage.pageUser,
         activePageUser: state.FriendsPage.activePageUser,
         isFetching: state.FriendsPage.isFetching,
-        followingInProgress: state.FriendsPage.followingInProgress,
-        isAuth: state.Auth.isAuth
+        followingInProgress: state.FriendsPage.followingInProgress
     }
 )
 
-export default connect(mapStateToProps, {
-    follow,
-    unfollow,
-    toggleFollowingProgress,
-    getUsers,
-    activePage
-})(FriendsContainer);
+
+export default compose(
+    connect(mapStateToProps, {
+        follow,
+        unfollow,
+        toggleFollowingProgress,
+        getUsers,
+        activePage
+    }),
+    WithAuthRedirect
+)(FriendsContainer)

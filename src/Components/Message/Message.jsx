@@ -30,11 +30,7 @@ const Message = (props) => {
         let message = MessageRef.current.value;
         props.UpdateMessageText(message)
     }
-
-    if(!props.isAuth){
-        return <Redirect to={'/login'}/>
-    }
-
+    
     return (
         <div className={style.dialogs}>
             <div className={style.name}>

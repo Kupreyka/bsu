@@ -3,6 +3,8 @@ import Home from "./Home";
 import {connect} from "react-redux";
 import {getUserId} from "../../redux/Profile-page-reducer";
 import {withRouter} from "react-router-dom";
+import {WithAuthRedirect} from "../../hoc/withAuthRedirect";
+import {compose} from "redux";
 
 
 class HomeContainer extends React.Component {
@@ -25,9 +27,13 @@ class HomeContainer extends React.Component {
 
 let mapStateToProps = (state) => (
     {
-        profile: state.ProfilePage.profile,
-        isAuth: state.Auth.isAuth
+        profile: state.ProfilePage.profile
     }
 )
 
-export default connect(mapStateToProps, {getUserId})(withRouter(HomeContainer));
+export default compose(
+    connect(mapStateToProps, {getUserId}),
+    withRouter,
+    WithAuthRedirect
+)(HomeContainer)
+
