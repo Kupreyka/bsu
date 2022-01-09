@@ -1,5 +1,5 @@
 import style from './Message.module.css'
-import {NavLink} from "react-router-dom";
+import {NavLink, Redirect} from "react-router-dom";
 import React from "react";
 import {AddMessageActionCreator, AddNewMessageTextActionCreator} from "../../redux/Dialogs-page-reducer";
 
@@ -29,6 +29,10 @@ const Message = (props) => {
     let onMessageChange = () => {
         let message = MessageRef.current.value;
         props.UpdateMessageText(message)
+    }
+
+    if(!props.isAuth){
+        return <Redirect to={'/login'}/>
     }
 
     return (

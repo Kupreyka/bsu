@@ -29,7 +29,6 @@ const Friends = (props) => {
                 <div>
                     {user.followed
                         ? <button disabled={props.followingInProgress.some(id => id === user.id)} onClick={() => {
-                            debugger
                             props.unfollow(user.id)
                         }}>Unfollow</button>
                         : <button disabled={props.followingInProgress.some(id => id === user.id)} onClick={() => {

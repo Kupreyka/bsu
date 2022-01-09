@@ -73,13 +73,12 @@ const FriendsReducer = (state = initialState, action) => {
             return state;
     }
 }
-
-export const followSucces = (userId) => ({type: FOLLOW, userId});
-export const unfollowSucces = (userId) => ({type: UNFOLLOW, userId});
-export const setUsers = (users) => ({type: SET_USERS, users});
-export const setActivePageUser = (activePageUser) => ({type: ACTIVE_PAGE_USER, activePageUser});
-export const setTotalUsersCount = (totalCountUsers) => ({type: SET_TOTAL_COUNT_USERS, totalCountUsers});
-export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching})
+const followSucces = (userId) => ({type: FOLLOW, userId});
+const unfollowSucces = (userId) => ({type: UNFOLLOW, userId});
+const setUsers = (users) => ({type: SET_USERS, users});
+const setActivePageUser = (activePageUser) => ({type: ACTIVE_PAGE_USER, activePageUser});
+const setTotalUsersCount = (totalCountUsers) => ({type: SET_TOTAL_COUNT_USERS, totalCountUsers});
+const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching})
 export const toggleFollowingProgress = (isFetching, userId) => ({
     type: TOGGLE_IS_FOLLOWING_PROGRESS,
     isFetching,
@@ -141,4 +140,6 @@ export const unfollow = (id) => {
             })
     }
 }
+
+
 export default FriendsReducer;

@@ -8,6 +8,7 @@ import MessageContainer from "./Components/Message/MessgeContainer";
 import FriendsClass from "./Components/Friends/FriendsContainer";
 import HomeContainer from "./Components/Home/HomeContainer";
 import HeaderContainer from "./Components/Header/HeaderContainer";
+import Login from "./Components/Login/Login";
 
 
 function App(props) {
@@ -21,6 +22,7 @@ function App(props) {
                     <Route path='/message' render={() => <MessageContainer />}/>
                     <Route path='/feed' render={() => <Feed/>}/>
                     <Route path='/friends' render={() => <FriendsClass/>}/>
+                    <Route path='/login' render={() => <Login/>}/>
                 </div>
             </div>
             <Footer/>

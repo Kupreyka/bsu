@@ -10,6 +10,7 @@ import {
 } from "../../redux/Friends-page-reducer";
 import Friends from "./Friends";
 import Preloader from "./Preloader/Preloader";
+import {Redirect} from "react-router-dom";
 
 
 class FriendsContainer extends React.Component {
@@ -26,6 +27,11 @@ class FriendsContainer extends React.Component {
     }
 
     render() {
+
+        if(!this.props.isAuth){
+            return <Redirect to={'/login'}/>
+        }
+
         return (<div>
             <Preloader /*isFetching={this.props.isFetching}*/ {...this.props}/>
             <Friends {...this.props} onPageChange={this.onPageChange} />
@@ -40,7 +46,8 @@ let mapStateToProps = (state) => (
         pageUser: state.FriendsPage.pageUser,
         activePageUser: state.FriendsPage.activePageUser,
         isFetching: state.FriendsPage.isFetching,
-        followingInProgress: state.FriendsPage.followingInProgress
+        followingInProgress: state.FriendsPage.followingInProgress,
+        isAuth: state.Auth.isAuth
     }
 )
 
