@@ -2,7 +2,6 @@ import React from "react";
 import defPhoto from "../../assets/default-photo.png";
 import style from './css/friendPage.module.css'
 import {NavLink} from "react-router-dom";
-import {UsersAPI} from "../../API/Api";
 
 const Friends = (props) => {
 
@@ -14,11 +13,11 @@ const Friends = (props) => {
 
     return (
         <div>
-            {pages.map(activePage => {
+            {pages.map(activePageSucces => {
                 return <span onClick={() => {
-                    props.onPageChange(activePage)
+                    props.onPageChange(activePageSucces)
                 }}
-                             className={`${style.default} ${props.activePageUser === activePage && style.active}`}>{activePage}</span>
+                             className={`${style.default} ${props.activePageUser === activePageSucces && style.active}`}>{activePageSucces}</span>
             })}
             {props.users.map(user => <div key={user.id}>
                 <div>
@@ -30,27 +29,11 @@ const Friends = (props) => {
                 <div>
                     {user.followed
                         ? <button disabled={props.followingInProgress.some(id => id === user.id)} onClick={() => {
-                            props.toggleFollowingProgress(true, user.id)
-                            UsersAPI.unfollow(user.id)
-                                .then(response => {
-                                    if (response.resultCode == 0) {
-                                        props.unfollow(user.id)
-                                    }
-                                    props.toggleFollowingProgress(false, user.id)
-                                })
-
-
+                            debugger
+                            props.unfollow(user.id)
                         }}>Unfollow</button>
                         : <button disabled={props.followingInProgress.some(id => id === user.id)} onClick={() => {
-                            props.toggleFollowingProgress(true, user.id)
-                            UsersAPI.follow(user.id)
-                                .then(response => {
-                                    if (response.resultCode == 0) {
-                                        props.follow(user.id)
-                                    }
-                                    props.toggleFollowingProgress(false, user.id)
-                                })
-
+                            props.follow(user.id)
                         }}>follow</button>
                     }
                 </div>

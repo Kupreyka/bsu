@@ -2,11 +2,14 @@ import React from "react";
 import {connect} from "react-redux";
 
 import {
-    follow, setActivePageUser, setTotalUsersCount, setUsers, toggleFollowingProgress, toggleIsFetching, unfollow
+    activePage,
+    follow,
+    getUsers,
+    toggleFollowingProgress,
+    unfollow,
 } from "../../redux/Friends-page-reducer";
 import Friends from "./Friends";
 import Preloader from "./Preloader/Preloader";
-import {UsersAPI} from "../../API/Api";
 
 
 class FriendsContainer extends React.Component {
@@ -15,39 +18,17 @@ class FriendsContainer extends React.Component {
     }
 
     componentDidMount() {
-        this.props.toggleIsFetching(true)
-        UsersAPI.getUser(this.props.activePageUser, this.props.pageUser)
-            .then(response => {
-                const users = response.items;
-                this.props.setUsers(users);
-                const totalUsers = response.totalCount;
-                this.props.setTotalUsersCount(totalUsers)
-                this.props.toggleIsFetching(false)
-
-            })
+        this.props.getUsers(this.props.activePageUser, this.props.pageUser)
     };
 
-    onPageChange = (activePage) => {
-        this.props.toggleIsFetching(true)
-        this.props.setActivePageUser(activePage);
-        UsersAPI.getUser(this.props.activePageUser, this.props.pageUser)
-            .then(response => {
-                const users = response.items;
-                this.props.setUsers(users);
-                this.props.toggleIsFetching(false)
-            })
+    onPageChange = (activePageSucces) => {
+        this.props.activePage(activePageSucces,this.props.activePageUser,this.props.pageUser)
     }
 
     render() {
         return (<div>
             <Preloader /*isFetching={this.props.isFetching}*/ {...this.props}/>
-            <Friends {...this.props} onPageChange={this.onPageChange}
-                /*totalCountUsers={this.props.totalCountUsers}
-                pageUser={this.props.pageUser}
-                unfollow={this.props.unfollow}
-                follow={this.props.follow}
-                users={this.props.users}
-                activePageUser={this.props.activePageUser}*/ />
+            <Friends {...this.props} onPageChange={this.onPageChange} />
         </div>)
     }
 }
@@ -66,9 +47,7 @@ let mapStateToProps = (state) => (
 export default connect(mapStateToProps, {
     follow,
     unfollow,
-    setUsers,
-    setActivePageUser,
-    setTotalUsersCount,
-    toggleIsFetching,
-    toggleFollowingProgress
+    toggleFollowingProgress,
+    getUsers,
+    activePage
 })(FriendsContainer);
