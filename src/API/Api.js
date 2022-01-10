@@ -39,6 +39,12 @@ export const UsersAPI = {
     }
 }
 
+export const ProfileApi = {
+    getStatus(userId){
+        return instance.get('/profile/status/' + userId)
+    }
+}
+
 
 
 
