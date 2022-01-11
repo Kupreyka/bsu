@@ -20,14 +20,6 @@ let initialState = {
 
 const DialogsPageReducer = (state = initialState, action) => {
 
-    let AddMessage = () => {
-
-    }
-    let AddNewMessageText = (newMessage) => {
-
-    }
-
-
     switch (action.type) {
         case  ADD_MESSAGE : {
             let stateCopy = {...state}

@@ -8,14 +8,12 @@ export class StatusContainer extends React.Component {
     }
 
     activeEditMode = () => {
-        this.state.editMode = true;
         this.setState({
             editMode: true
         })
     }
 
     inactiveEditMode = () => {
-        this.state.editMode = false;
         this.setState({
             editMode: false
         });
@@ -25,6 +23,14 @@ export class StatusContainer extends React.Component {
         this.setState({
             status: e.currentTarget.value
         })
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevProps.status !== this.props.status){
+            this.setState({
+                status: this.props.status
+            })
+        }
     }
 
     render() {

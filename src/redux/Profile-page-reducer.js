@@ -7,11 +7,7 @@ const SET_PROFILE_STATUS = 'SET_PROFILE_STATUS';
 
 
 let initialState = {
-    messageData: [
-        {message: 'Hello'},
-        {message: 'How are you?'},
-        {message: 'Sorry'}
-    ],
+    messageData: [],
     NewPostText: '',
     profile: null,
     status: ''
