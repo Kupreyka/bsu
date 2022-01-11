@@ -3,7 +3,7 @@ import {ProfileApi, UsersAPI} from "../API/Api";
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 const SET_PROFILE_PAGE = 'SET_PROFILE_PAGE';
-const SET_PROFILE_STATUS ='SET_PROFILE_STATUS';
+const SET_PROFILE_STATUS = 'SET_PROFILE_STATUS';
 
 
 let initialState = {
@@ -20,7 +20,7 @@ let initialState = {
 const ProfilePageReducer = (state = initialState, action) => {
 
     switch (action.type) {
-        case ADD_POST:{
+        case ADD_POST: {
             let stateCopy = {...state}
             stateCopy.messageData = [...state.messageData]
             stateCopy.messageData.push(
@@ -29,17 +29,17 @@ const ProfilePageReducer = (state = initialState, action) => {
             stateCopy.NewPostText = ''
             return stateCopy;
         }
-        case UPDATE_NEW_POST_TEXT:{
+        case UPDATE_NEW_POST_TEXT: {
             let stateCopy = {...state}
             stateCopy.NewPostText = action.newPostText
             return stateCopy
         }
-        case SET_PROFILE_PAGE:{
+        case SET_PROFILE_PAGE: {
             return {
                 ...state, profile: action.profile
             }
         }
-        case SET_PROFILE_STATUS:{
+        case SET_PROFILE_STATUS: {
             return {
                 ...state, status: action.status
             }
@@ -50,19 +50,20 @@ const ProfilePageReducer = (state = initialState, action) => {
 
 }
 export const AddPostActionCreator = () => {
-    return{type:ADD_POST}
+    return {type: ADD_POST}
 }
-export const UpdateNewPostTextActionCreator =(text) => {
-    return {type:UPDATE_NEW_POST_TEXT,newPostText: text}
+export const UpdateNewPostTextActionCreator = (text) => {
+    return {type: UPDATE_NEW_POST_TEXT, newPostText: text}
 }
 
 export const setProfile = (profile) => {
-  return {type:SET_PROFILE_PAGE, profile}
+    return {type: SET_PROFILE_PAGE, profile}
 }
 
 const setProfileStatus = (status) => {
     return {type: SET_PROFILE_STATUS, status}
 }
+
 
 export const getUserId = (UserId) => {
     return (dispatch) => {
@@ -79,6 +80,17 @@ export const getStatus = (userId) => {
         ProfileApi.getStatus(userId)
             .then(response => {
                 dispatch(setProfileStatus(response.data))
+            })
+    }
+}
+
+export const updateProfileStatus = (status) => {
+    return dispatch => {
+        ProfileApi.updateStatus(status)
+            .then(response => {
+                if (response.data.resultCode === 0) {
+                    dispatch(setProfileStatus(status))
+                }
             })
     }
 }

@@ -3,7 +3,8 @@ import React from "react";
 export class StatusContainer extends React.Component {
 
     state = {
-        editMode: false
+        editMode: false,
+        status: this.props.status
     }
 
     activeEditMode = () => {
@@ -17,6 +18,12 @@ export class StatusContainer extends React.Component {
         this.state.editMode = false;
         this.setState({
             editMode: false
+        });
+        this.props.updateProfileStatus(this.state.status)
+    }
+    onStatusChange = (e) => {
+        this.setState({
+            status: e.currentTarget.value
         })
     }
 
@@ -25,12 +32,13 @@ export class StatusContainer extends React.Component {
             <div className="status">
                 {!this.state.editMode &&
                 <div>
-                    <span onDoubleClick={this.activeEditMode}>{this.props.status}</span>
+                    <span onDoubleClick={this.activeEditMode}>{this.props.status || 'Установить статус'}</span>
                 </div>
                 }
                 {this.state.editMode &&
                 <div>
-                    <input autoFocus={true} onBlur={this.inactiveEditMode} type="text" value={this.props.status}/>
+                    <input onChange={this.onStatusChange} autoFocus={true} onBlur={this.inactiveEditMode} type="text"
+                           value={this.state.status}/>
                 </div>
                 }
             </div>

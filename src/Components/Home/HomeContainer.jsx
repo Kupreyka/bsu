@@ -1,7 +1,7 @@
 import React from "react";
 import Home from "./Home";
 import {connect} from "react-redux";
-import {getStatus, getUserId} from "../../redux/Profile-page-reducer";
+import {getStatus, getUserId, updateProfileStatus} from "../../redux/Profile-page-reducer";
 import {withRouter} from "react-router-dom";
 import {WithAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
@@ -34,7 +34,7 @@ let mapStateToProps = (state) => (
 )
 
 export default compose(
-    connect(mapStateToProps, {getUserId, getStatus}),
+    connect(mapStateToProps, {getUserId, getStatus, updateProfileStatus}),
     withRouter,
     WithAuthRedirect
 )(HomeContainer)
