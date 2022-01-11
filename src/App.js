@@ -22,7 +22,7 @@ function App(props) {
                     <Route path='/message' render={() => <MessageContainer />}/>
                     <Route path='/feed' render={() => <Feed/>}/>
                     <Route path='/friends' render={() => <FriendsClass/>}/>
-                    <Route path='/login' render={() => <Login/>}/>
+                    <Route path='/login' render={() => <Login />}/>
                 </div>
             </div>
             <Footer/>
