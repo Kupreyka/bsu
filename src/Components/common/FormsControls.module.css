@@ -1,0 +1,15 @@
+
+
+input,
+textarea{
+    outline:none;
+}
+
+.formsControls.error textarea,
+.formsControls.error input{
+    border: 2px solid red;
+}
+
+.formsControls.error span{
+    color:red
+}
