@@ -8,7 +8,6 @@ const SET_PROFILE_STATUS = 'SET_PROFILE_STATUS';
 
 let initialState = {
     messageData: [],
-    NewPostText: '',
     profile: null,
     status: ''
 }
@@ -20,15 +19,9 @@ const ProfilePageReducer = (state = initialState, action) => {
             let stateCopy = {...state}
             stateCopy.messageData = [...state.messageData]
             stateCopy.messageData.push(
-                {message: state.NewPostText}
+                {message: action.NewPost}
             );
-            stateCopy.NewPostText = ''
             return stateCopy;
-        }
-        case UPDATE_NEW_POST_TEXT: {
-            let stateCopy = {...state}
-            stateCopy.NewPostText = action.newPostText
-            return stateCopy
         }
         case SET_PROFILE_PAGE: {
             return {
@@ -45,8 +38,8 @@ const ProfilePageReducer = (state = initialState, action) => {
     }
 
 }
-export const AddPostActionCreator = () => {
-    return {type: ADD_POST}
+export const AddPostActionCreator = (NewPost) => {
+    return {type: ADD_POST, NewPost}
 }
 export const UpdateNewPostTextActionCreator = (text) => {
     return {type: UPDATE_NEW_POST_TEXT, newPostText: text}

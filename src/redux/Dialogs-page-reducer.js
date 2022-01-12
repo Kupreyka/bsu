@@ -1,6 +1,4 @@
 const ADD_MESSAGE = 'ADD-MESSAGE';
-const ADD_NEW_MESSAGE_TEXT = 'ADD-NEW-MESSAGE-TEXT';
-
 
 let initialState = {
     MessageData: [
@@ -14,8 +12,7 @@ let initialState = {
         {id: 3, name: 'Andrey'},
         {id: 4, name: 'Artem'},
         {id: 5, name: 'Alexey'}
-    ],
-    NewMessageText: ' '
+    ]
 }
 
 const DialogsPageReducer = (state = initialState, action) => {
@@ -25,26 +22,16 @@ const DialogsPageReducer = (state = initialState, action) => {
             let stateCopy = {...state}
             stateCopy.MessageData = [...state.MessageData]
             stateCopy.MessageData.push(
-                {message: state.NewMessageText}
+                {message: action.Message}
             );
-            stateCopy.NewMessageText = '';
-            return stateCopy
-        }
-        case  ADD_NEW_MESSAGE_TEXT: {
-            let stateCopy = {...state}
-            stateCopy.NewMessageText = action.newMessage;
             return stateCopy
         }
         default:
             return state
     }
 }
-export const AddMessageActionCreator = () => {
-    return {type: ADD_MESSAGE}
+export const AddMessageActionCreator = (Message) => {
+    return {type: ADD_MESSAGE, Message}
 }
-export const AddNewMessageTextActionCreator = (message) => {
-    return {type: ADD_NEW_MESSAGE_TEXT, newMessage: message}
-}
-
 
 export default DialogsPageReducer
