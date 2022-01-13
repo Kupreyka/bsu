@@ -26,12 +26,7 @@ export const UsersAPI = {
             return response.data
         })
     },
-    auth() {
-        return instance.get('auth/me').then(response => {
-            return response.data
-        })
-    },
-    getUserId(UserId){
+    getUserId(UserId) {
         return instance.get('profile/' + UserId)
             .then(response => {
                 return response.data
@@ -40,15 +35,25 @@ export const UsersAPI = {
 }
 
 export const ProfileApi = {
-    getStatus(userId){
+    getStatus(userId) {
         return instance.get('/profile/status/' + userId)
     },
-    updateStatus(status){
+    updateStatus(status) {
         return instance.put('/profile/status', {status: status})
     }
 
 }
 
-
+export const AuthAPI = {
+    auth() {
+        return instance.get('auth/me')
+    },
+    login(email, password, rememberMe) {
+        return instance.post('/auth/login', {email, password, rememberMe})
+    },
+    logout() {
+        return instance.delete('/auth/login')
+    }
+}
 
 

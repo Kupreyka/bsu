@@ -2,6 +2,8 @@ import style from './Message.module.css'
 import {NavLink} from "react-router-dom";
 import React from "react";
 import {Field, reduxForm} from "redux-form";
+import {Textarea} from "../common/FormsControls";
+import {maxLengthCreator, required} from "../../utilities/validator";
 
 const Name = (props) => {
     return (
@@ -38,10 +40,12 @@ const Message = (props) => {
     )
 }
 
+let MaxLength = maxLengthCreator(10)
+
 let AddMessageForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
-            <Field component={'textarea'} name={'Message'} placeholder={'Введите сообщение'} cols={'50'} rows={'10'}/>
+            <Field component={Textarea} validate={[required, MaxLength ]} name={'Message'} placeholder={'Введите сообщение'} cols={'50'} rows={'10'}/>
             <button>Отправить</button>
         </form>
     )
