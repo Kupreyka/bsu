@@ -1,7 +1,7 @@
 import React from "react";
 import {Field, reduxForm} from "redux-form";
 import {Input} from "../common/FormsControls";
-import {maxLengthCreator, required} from "../../utilities/validator";
+import {required} from "../../utilities/validator";
 import {connect} from "react-redux";
 import {login} from "../../redux/Auth-reducer";
 import {Redirect} from "react-router-dom";
@@ -13,7 +13,8 @@ const LoginForm = (props) => {
                 <Field placeholder={'login'} name={'email'} component={Input} validate={[required]}/>
             </div>
             <div>
-                <Field placeholder={'password'} name={'password'} component={Input} type={'password'} validate={[required]}/>
+                <Field placeholder={'password'} name={'password'} component={Input} type={'password'}
+                       validate={[required]}/>
             </div>
             <div>
                 <Field type="checkbox" name={'rememberMe'} component={Input}/> Remember me
@@ -21,6 +22,9 @@ const LoginForm = (props) => {
             <div>
                 <button>Log in</button>
             </div>
+            {props.error &&
+            <div>{props.error}</div>
+            }
         </form>
     )
 }
@@ -33,7 +37,7 @@ const Login = (props) => {
         props.login(value.email, value.password, value.rememberMe)
     }
 
-    if (props.isAuth){
+    if (props.isAuth) {
         return <Redirect to={'/home'}/>
     }
 
@@ -49,7 +53,6 @@ const Login = (props) => {
 let mapStateToProps = (state) => ({
     isAuth: state.Auth.isAuth
 })
-
 
 
 export default connect(mapStateToProps, {login})(Login)

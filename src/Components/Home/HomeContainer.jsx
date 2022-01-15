@@ -12,7 +12,7 @@ class HomeContainer extends React.Component {
     componentDidMount() {
         let UserId = this.props.match.params.UserId;
         if (!UserId) {
-            UserId = 17315
+            UserId = this.props.loginId
         }
         this.props.getUserId(UserId)
         this.props.getStatus(UserId)
@@ -29,7 +29,8 @@ class HomeContainer extends React.Component {
 let mapStateToProps = (state) => (
     {
         profile: state.ProfilePage.profile,
-        status: state.ProfilePage.status
+        status: state.ProfilePage.status,
+        loginId: state.Auth.id
     }
 )
 
