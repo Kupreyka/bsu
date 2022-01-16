@@ -13,19 +13,19 @@ import {connect} from "react-redux";
 import {compose} from "redux";
 import {initializeApp} from "./redux/App-reducer";
 import Preloader from "./Components/Friends/Preloader/Preloader";
+import React from "react";
 
 
-class App extends Component {
+class App extends React.Component {
 
     componentDidMount() {
-        this.props.initializeApp();
+        this.props.initializeApp()
     }
 
     render() {
         if (!this.props.initialized) {
             return <Preloader/>
         }
-
 
         return (
             <div className="App">
