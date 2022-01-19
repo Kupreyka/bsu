@@ -12,7 +12,7 @@ let initialState = {
     status: ''
 }
 
-const ProfilePageReducer = (state = initialState, action) => {
+    const ProfilePageReducer = (state = initialState, action) => {
 
     switch (action.type) {
         case ADD_POST: {
