@@ -1,7 +1,7 @@
 import {AuthAPI} from "../API/Api";
 import {stopSubmit} from "redux-form";
 
-const SET_USER_DATA = 'SET_USER_DATA';
+const SET_USER_DATA = 'auth/SET_USER_DATA';
 
 
 let initialState = {
@@ -28,7 +28,7 @@ const AuthReducer = (state = initialState, action) => {
 
 export const setUserData = (id, login, email, isAuth) => ({type: SET_USER_DATA, data: {id, login, email, isAuth}})
 
-export const Auth = () => {
+export const Auth =  () => {
     return (dispatch) => {
         return AuthAPI.auth()
             .then(response => {

@@ -1,12 +1,13 @@
 import {UsersAPI} from "../API/Api";
+import {updateObjectInArray} from "../utilities/object-helpers";
 
-const FOLLOW = 'FOLLOW';
-const UNFOLLOW = 'UNFOLLOW';
-const SET_USERS = 'SET_USERS';
-const ACTIVE_PAGE_USER = 'ACTIVE_PAGE_USER';
-const SET_TOTAL_COUNT_USERS = 'SET_TOTAL_COUNT_USERS';
-const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
-const TOGGLE_IS_FOLLOWING_PROGRESS = 'TOGGLE_IS_FOLLOWING_PROGRESS'
+const FOLLOW = 'friends/FOLLOW';
+const UNFOLLOW = 'friends/UNFOLLOW';
+const SET_USERS = 'friends/SET_USERS';
+const ACTIVE_PAGE_USER = 'friends/ACTIVE_PAGE_USER';
+const SET_TOTAL_COUNT_USERS = 'friends/SET_TOTAL_COUNT_USERS';
+const TOGGLE_IS_FETCHING = 'friends/TOGGLE_IS_FETCHING';
+const TOGGLE_IS_FOLLOWING_PROGRESS = 'friends/TOGGLE_IS_FOLLOWING_PROGRESS'
 
 let initialState = {
     users: [],
@@ -25,22 +26,12 @@ const FriendsReducer = (state = initialState, action) => {
         case FOLLOW:
             return {
                 ...state,
-                users: state.users.map(user => {
-                    if (user.id === action.userId) {
-                        return {...user, followed: true}
-                    }
-                    return user;
-                })
+                users: updateObjectInArray(state.users, action.userId, "id", {followed: true} )
             }
         case UNFOLLOW:
             return {
                 ...state,
-                users: state.users.map(user => {
-                    if (user.id === action.userId) {
-                        return {...user, followed: false}
-                    }
-                    return user;
-                })
+                users: updateObjectInArray(state.users, action.userId, "id", {followed: false} )
             }
         case SET_USERS:
             return {
