@@ -1,9 +1,9 @@
-import React from "react";
+import React, {useState} from "react";
 import defPhoto from "../../assets/default-photo.png";
 import style from './css/friendPage.module.css'
 import {NavLink} from "react-router-dom";
 
-const Friends = (props) => {
+const Friends = (props, {portionSize = 10}) => {
 
     let pageCount = Math.ceil(props.totalCountUsers / props.pageUser)
     let pages = [];
@@ -11,14 +11,29 @@ const Friends = (props) => {
         pages.push(i);
     }
 
+    let portionCount = Math.ceil(pageCount / portionSize);
+    let [portionNumber, setPortionNumber] = useState(1);
+    let leftPortionPageNumber = (portionNumber - 1) * portionSize + 1;
+    let rightPortionPageNumber = portionNumber * portionSize;
+
     return (
         <div>
-            {pages.map(activePageSucces => {
-                return <span onClick={() => {
-                    props.onPageChange(activePageSucces)
-                }}
-                             className={`${style.default} ${props.activePageUser === activePageSucces && style.active}`}>{activePageSucces}</span>
-            })}
+            {portionNumber > 1 &&
+            <button onClick={() => {
+                setPortionNumber(portionNumber - 1)
+            }}>PREV</button>}
+            {pages
+                .filter(p => p >= leftPortionPageNumber && p <= rightPortionPageNumber)
+                .map(activePageSucces => {
+                    return <span onClick={() => {
+                        props.onPageChange(activePageSucces)
+                    }}
+                                 className={`${style.default} ${props.activePageUser === activePageSucces && style.active}`}>{activePageSucces}</span>
+                })}
+            {portionCount > portionNumber &&
+            <button onClick={() => {
+                setPortionNumber(portionNumber + 1)
+            }}>NEXT</button>}
             {props.users.map(user => <div key={user.id}>
                 <div>
                     <NavLink to={/home/ + user.id}>
