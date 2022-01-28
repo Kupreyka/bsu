@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/bsu/static/css/main.10ff45ce.chunk.css",
+    "main.js": "/bsu/static/js/main.5c372a79.chunk.js",
+    "main.js.map": "/bsu/static/js/main.5c372a79.chunk.js.map",
+    "runtime-main.js": "/bsu/static/js/runtime-main.4fc7d010.js",
+    "runtime-main.js.map": "/bsu/static/js/runtime-main.4fc7d010.js.map",
+    "static/js/2.9d77acb9.chunk.js": "/bsu/static/js/2.9d77acb9.chunk.js",
+    "static/js/2.9d77acb9.chunk.js.map": "/bsu/static/js/2.9d77acb9.chunk.js.map",
+    "static/js/3.846a6217.chunk.js": "/bsu/static/js/3.846a6217.chunk.js",
+    "static/js/3.846a6217.chunk.js.map": "/bsu/static/js/3.846a6217.chunk.js.map",
+    "index.html": "/bsu/index.html",
+    "static/css/main.10ff45ce.chunk.css.map": "/bsu/static/css/main.10ff45ce.chunk.css.map",
+    "static/js/2.9d77acb9.chunk.js.LICENSE.txt": "/bsu/static/js/2.9d77acb9.chunk.js.LICENSE.txt",
+    "static/media/default-photo.7cae1f1e.png": "/bsu/static/media/default-photo.7cae1f1e.png",
+    "static/media/logo.f90ffb06.png": "/bsu/static/media/logo.f90ffb06.png",
+    "static/media/preloader.62d5c54d.svg": "/bsu/static/media/preloader.62d5c54d.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4fc7d010.js",
+    "static/js/2.9d77acb9.chunk.js",
+    "static/css/main.10ff45ce.chunk.css",
+    "static/js/main.5c372a79.chunk.js"
+  ]
+}
