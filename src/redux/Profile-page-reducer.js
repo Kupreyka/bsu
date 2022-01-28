@@ -4,6 +4,7 @@ const ADD_POST = 'profile/ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'profile/UPDATE-NEW-POST-TEXT';
 const SET_PROFILE_PAGE = 'profile/SET_PROFILE_PAGE';
 const SET_PROFILE_STATUS = 'profile/SET_PROFILE_STATUS';
+const SAVE_PHOTO = 'profile/SAVE_PHOTO';
 
 
 let initialState = {
@@ -12,7 +13,7 @@ let initialState = {
     status: ''
 }
 
-    const ProfilePageReducer = (state = initialState, action) => {
+const ProfilePageReducer = (state = initialState, action) => {
 
     switch (action.type) {
         case ADD_POST: {
@@ -33,6 +34,11 @@ let initialState = {
                 ...state, status: action.status
             }
         }
+        case SAVE_PHOTO: {
+            return {
+                ...state,profile: {...state.profile, photos: action.photos}
+            }
+        }
         default:
             return state
     }
@@ -51,6 +57,10 @@ export const setProfile = (profile) => {
 
 const setProfileStatus = (status) => {
     return {type: SET_PROFILE_STATUS, status}
+}
+
+const savePhotoSuccess = (photos) => {
+    return {type: SAVE_PHOTO, photos}
 }
 
 
@@ -84,4 +94,15 @@ export const updateProfileStatus = (status) => {
     }
 }
 
+export const savePhoto = (file) => {
+    return dispatch => {
+        ProfileApi.savePhoto(file)
+            .then(response => {
+                if (response.data.resultCode === 0) {
+                    let savePhoto = response.data.data.photos
+                    dispatch(savePhotoSuccess(savePhoto))
+                }
+            })
+    }
+}
 export default ProfilePageReducer

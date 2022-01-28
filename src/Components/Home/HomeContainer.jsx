@@ -1,7 +1,7 @@
 import React from "react";
 import Home from "./Home";
 import {connect} from "react-redux";
-import {getStatus, getUserId, updateProfileStatus} from "../../redux/Profile-page-reducer";
+import {getStatus, getUserId, savePhoto, updateProfileStatus} from "../../redux/Profile-page-reducer";
 import {withRouter} from "react-router-dom";
 import {WithAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
@@ -9,7 +9,7 @@ import {compose} from "redux";
 
 class HomeContainer extends React.Component {
 
-    componentDidMount() {
+    checkUpdate() {
         let UserId = this.props.match.params.UserId;
         if (!UserId) {
             UserId = this.props.loginId
@@ -18,9 +18,19 @@ class HomeContainer extends React.Component {
         this.props.getStatus(UserId)
     }
 
+    componentDidMount() {
+        this.checkUpdate()
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (this.props.match.params.UserId != prevProps.match.params.UserId) {
+            this.checkUpdate()
+        }
+    }
+
     render() {
         return (
-            <Home {...this.props} profile={this.props.profile}/>
+            <Home {...this.props} profile={this.props.profile} isOwner={!this.props.match.params.UserId} savePhoto={this.props.savePhoto}/>
         )
     }
 }
@@ -30,12 +40,12 @@ let mapStateToProps = (state) => (
     {
         profile: state.ProfilePage.profile,
         status: state.ProfilePage.status,
-        loginId: state.Auth.id
+        loginId: state.Auth.id,
     }
 )
 
 export default compose(
-    connect(mapStateToProps, {getUserId, getStatus, updateProfileStatus}),
+    connect(mapStateToProps, {getUserId, getStatus, updateProfileStatus, savePhoto}),
     withRouter,
     WithAuthRedirect
 )(HomeContainer)
