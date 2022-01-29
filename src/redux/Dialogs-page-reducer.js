@@ -2,16 +2,10 @@ const ADD_MESSAGE = 'dialogs/ADD-MESSAGE';
 
 let initialState = {
     MessageData: [
-        {message: 'Hello'},
-        {message: 'How are you?'},
-        {message: 'Goodbye'}
+        {message: ''},
     ],
     nameData: [
-        {id: 1, name: 'Kirill'},
-        {id: 2, name: 'Svetlana'},
-        {id: 3, name: 'Andrey'},
-        {id: 4, name: 'Artem'},
-        {id: 5, name: 'Alexey'}
+        {id: 1, name: 'Kirill'}
     ]
 }
 
