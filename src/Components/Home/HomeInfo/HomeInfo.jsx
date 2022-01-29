@@ -4,6 +4,9 @@ import StatusHooks from "../Posts/StatusHooks";
 import defPhoto from "../../../assets/default-photo.png";
 import style from './HomeInfo.module.css'
 import ProfileDataFormRedux from "./ProfileDataForm";
+import {Button, Input} from "@material-ui/core";
+
+
 
 const HomeInfo = (props) => {
 
@@ -27,7 +30,13 @@ const HomeInfo = (props) => {
 
     return (<>
             <div><img src={props.profile.photos.large || defPhoto} className={style.mainPhoto}/></div>
-            {props.isOwner && <input type="file" onChange={onMainPhotoSelected}/>}
+            {/*{props.isOwner && <input type="file" onChange={onMainPhotoSelected}/>}*/}
+            {props.isOwner && <label htmlFor="contained-button-file">
+                <Input accept="image/*" id="contained-button-file" multiple type="file" onChange={onMainPhotoSelected} />
+                <Button variant="contained" component="span">
+                    Upload
+                </Button>
+            </label>}
             {editMode ?
                 <ProfileDataFormRedux onSubmit={onSubmit} profile={props.profile} initialValues={props.profile}/> :
                 <ProfileData profile={props.profile} isOwner={props.isOwner} goToEditMode={() => {

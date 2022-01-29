@@ -17,3 +17,10 @@ img{
 .registration button:hover{
     background: darkcyan;
 }
+.customHeader{
+    display: flex!important;
+}
+
+.headerCustomItem{
+    margin: 0 1em;
+}

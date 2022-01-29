@@ -1,7 +1,9 @@
 import React from "react";
 import {Field, reduxForm} from "redux-form";
-import {Input, Textarea} from "../../common/FormsControls";
+import {CheckboxCustom, Input, Textarea} from "../../common/FormsControls";
 import style from './HomeInfo.module.css'
+import SendIcon from '@mui/icons-material/Send';
+import {Button} from "@material-ui/core";
 
 const ProfileDataForm = (props) => {
     return (
@@ -13,7 +15,7 @@ const ProfileDataForm = (props) => {
             <div><b>Обо мне:</b> <Field name={'aboutMe'} component={Textarea}/>
             </div>
             <div>
-                <b>Нахожусь в поиске работы: </b><Field type={'checkbox'} name={'lookingForAJob'} component={Input}/>
+                <b>Нахожусь в поиске работы: </b><Field type={'checkbox'} name={'lookingForAJob'} component={CheckboxCustom}/>
             </div>
             <div>
                 <b>Скиллы:</b><Field component={Textarea} name={'lookingForAJobDescription'}/>
@@ -29,7 +31,10 @@ const ProfileDataForm = (props) => {
 
             </div>
             <div>
-                <button>Сохранить</button>
+                <button><Button variant="contained" endIcon={<SendIcon />}>
+                    Send
+                </Button></button>
+
             </div>
         </form>
     )
