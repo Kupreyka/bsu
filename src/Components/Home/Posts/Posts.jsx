@@ -4,6 +4,7 @@ import React from "react";
 import {Field, reduxForm} from "redux-form";
 import {maxLengthCreator, required} from "../../../utilities/validator";
 import {Textarea} from "../../common/FormsControls";
+import {Button} from "@material-ui/core";
 
 
 const Posts = (props) => {
@@ -26,9 +27,14 @@ let NewPostForm = (props) => {
 
     return (
         <form onSubmit={props.handleSubmit}>
-            <Field component={Textarea} name={'NewPost'} placeholder={'NewPost'}
-                   validate={[required, MaxLength]}/>
-            <button>AddPost</button>
+            <Field className={style.postTextArea} component={Textarea} name={'NewPost'}
+                   placeholder={'Что у Вас нового?'}
+            />
+            <button>
+                <Button variant="contained" component="span">
+                    Опубликовать
+                </Button>
+            </button>
         </form>
     )
 }

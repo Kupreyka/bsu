@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import style from './../HomeInfo/HomeInfo.module.css'
 
 const StatusHooks = (props) => {
 
@@ -26,12 +27,12 @@ const StatusHooks = (props) => {
         <div className="status">
             {!editMode &&
             <div>
-                <b>Статус:</b> <span onDoubleClick={activeEditMode}>{props.status || 'Установить статус'}</span>
+                <span onClick={activeEditMode}>{props.status || 'Установить статус'}</span>
             </div>
             }
             {editMode &&
             <div>
-                <input onChange={onStatusChange} autoFocus={true} onBlur={inactiveEditMode} type="text"
+                <input className={style.statusInput} onChange={onStatusChange} autoFocus={true} onBlur={inactiveEditMode} type="text"
                        value={status}/>
             </div>
             }

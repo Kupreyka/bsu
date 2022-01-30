@@ -45,6 +45,7 @@ let mapStateToProps = (state) => (
         profile: state.ProfilePage.profile,
         status: state.ProfilePage.status,
         loginId: state.Auth.id,
+       /* isAuth: state.Auth.isAuth*/
 
     }
 )

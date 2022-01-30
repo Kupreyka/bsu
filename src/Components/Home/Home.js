@@ -8,8 +8,7 @@ const Home = (props) => {
 
     return (
         <div className={style.home}>
-            <HomeInfo profile={props.profile} status={props.status} isOwner={props.isOwner} updateProfileStatus={props.updateProfileStatus} savePhoto={props.savePhoto} saveProfile={props.saveProfile}/>
-            <PostsContainer/>
+            <HomeInfo profile={props.profile} status={props.status} isOwner={props.isOwner} updateProfileStatus={props.updateProfileStatus} savePhoto={props.savePhoto} saveProfile={props.saveProfile} isAuth={props.isAuth}/>
         </div>
     )
 }

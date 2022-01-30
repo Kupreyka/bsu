@@ -6,15 +6,26 @@
 }
 .menu a{
     text-decoration: none;
-    margin: .1em auto;
+    margin: .3em auto;
     font-size: 1.4em;
     color: #777!important ;
+    display: flex;
+    align-items: center;
+}
+
+.menu a svg{
+    padding-right: .3em;
+    padding-left: .3em;
+}
+
+.menuItem{
+    margin: 0 auto;
 }
 
 .menu a:hover{
-    color: darkcyan;
+    background:rgba(174, 183, 194, 0.12);
 }
 
 .menu a.active{
-    color: darkcyan;
+    background:rgba(174, 183, 194, 0.12);
 }

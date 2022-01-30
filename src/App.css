@@ -16,3 +16,28 @@
 .MuiCheckbox-colorSecondary.Mui-checked{
     color: #d5d5d5!important;
 }
+.MuiButton-contained{
+    height: 30px;
+}
+
+.status{
+    cursor: pointer;
+    color: #aaa!important;
+    font-size: 14px;
+    border: none;
+    margin: 0 0 1em 0;
+}
+
+.status:hover{
+    background: #5e5e5e!important;
+}
+
+.MuiButton-contained{
+    background: #5e5e5e!important;
+    color: #fff!important;
+}
+
+.redBtn{
+    margin: 1em 0!important;
+    color: #fff!important;
+}
