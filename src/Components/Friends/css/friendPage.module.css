@@ -8,3 +8,10 @@
     cursor: pointer;
 }
 
+.btn{
+    background: #5e5e5e!important;
+    opacity: 0.73;
+    border-radius: 4px;
+    color: #fff;
+}
+

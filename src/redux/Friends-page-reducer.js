@@ -12,7 +12,7 @@ const TOGGLE_IS_FOLLOWING_PROGRESS = 'friends/TOGGLE_IS_FOLLOWING_PROGRESS'
 let initialState = {
     users: [],
     totalCountUsers: 0,
-    pageUser: 10,
+    pageUser: 5,
     activePageUser: 1,
     isFetching: false,
     followingInProgress: []

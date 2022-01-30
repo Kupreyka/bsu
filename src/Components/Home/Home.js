@@ -1,6 +1,7 @@
 import style from './Home.module.css'
 import PostsContainer from "./Posts/PostsContainrt";
 import HomeInfo from "./HomeInfo/HomeInfo";
+import {useEffect} from "react";
 
 
 const Home = (props) => {

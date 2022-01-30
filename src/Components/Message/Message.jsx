@@ -4,6 +4,7 @@ import React from "react";
 import {Field, reduxForm} from "redux-form";
 import {Textarea} from "../common/FormsControls";
 import {maxLengthCreator, required} from "../../utilities/validator";
+import {Helmet} from "react-helmet";
 
 const Name = (props) => {
     return (
@@ -29,6 +30,9 @@ const Message = (props) => {
 
     return (
         <div className={style.dialogs}>
+            <Helmet>
+                <title>Мессенджер</title>
+            </Helmet>
             <div className={style.name}>
                 {nameElement}
             </div>

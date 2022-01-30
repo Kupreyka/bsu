@@ -1,10 +1,13 @@
 import React from "react";
 import {Field, reduxForm} from "redux-form";
-import {Input} from "../common/FormsControls";
+import {CheckboxCustom, Input} from "../common/FormsControls";
 import {required} from "../../utilities/validator";
 import {connect} from "react-redux";
 import {login} from "../../redux/Auth-reducer";
 import {Redirect} from "react-router-dom";
+import {Helmet} from "react-helmet";
+import style from "./Login.module.css"
+import {Button} from "@material-ui/core";
 
 const LoginForm = (props) => {
     return (
@@ -17,10 +20,12 @@ const LoginForm = (props) => {
                        validate={[required]}/>
             </div>
             <div>
-                <Field type="checkbox" name={'rememberMe'} component={Input}/> Remember me
+                <Field type="checkbox" name={'rememberMe'} component={CheckboxCustom}/> Remember me
             </div>
             <div>
-                <button>Log in</button>
+                <button>
+                    <Button className={style.customBtn} variant="contained">Войти</Button>
+                </button>
             </div>
             {props.captcha && <img src={props.captcha}/>}
             {props.captcha && <Field name={'captcha'} component={Input}/>}
@@ -43,12 +48,16 @@ const Login = (props) => {
     }
 
     return (
-        <>
-            <h1>LOGIN</h1>
+        <div className={style.login}>
+            <Helmet>
+                <title>Авторизация</title>
+            </Helmet>
+            <h1>Вход</h1>
             <LoginReduxForm onSubmit={onSubmit} captcha={props.captcha}/>
-        </>
+        </div>
     )
 }
+
 
 
 let mapStateToProps = (state) => ({

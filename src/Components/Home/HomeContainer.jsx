@@ -5,6 +5,7 @@ import {getStatus, getUserId, savePhoto, saveProfile, updateProfileStatus} from 
 import {withRouter} from "react-router-dom";
 import {WithAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
+import { Helmet } from "react-helmet";
 
 
 class HomeContainer extends React.Component {
@@ -19,7 +20,7 @@ class HomeContainer extends React.Component {
     }
 
     componentDidMount() {
-        this.checkUpdate()
+        this.checkUpdate();
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -29,9 +30,12 @@ class HomeContainer extends React.Component {
     }
 
     render() {
-        return (
+        return (<>
+            {this.props.profile && <Helmet>
+                <title>{this.props.profile.fullName}</title>
+            </Helmet>}
             <Home {...this.props} profile={this.props.profile} isOwner={!this.props.match.params.UserId} savePhoto={this.props.savePhoto} saveProfile={this.props.saveProfile}/>
-        )
+        </>)
     }
 }
 
@@ -41,6 +45,7 @@ let mapStateToProps = (state) => (
         profile: state.ProfilePage.profile,
         status: state.ProfilePage.status,
         loginId: state.Auth.id,
+
     }
 )
 

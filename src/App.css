@@ -6,9 +6,13 @@
 }
 .main{
     display: grid;
-    grid-template-columns: 2fr 10fr;
+    grid-template-columns: 25% 50% 25%;
     column-gap: 1em;
 }
 .components{
-    background: aliceblue;
+    background: #333336!important;
+}
+
+.MuiCheckbox-colorSecondary.Mui-checked{
+    color: #d5d5d5!important;
 }

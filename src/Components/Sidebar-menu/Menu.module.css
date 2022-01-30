@@ -1,14 +1,14 @@
 .menu{
     display: flex;
     flex-direction: column;
-    background: aliceblue;
+    background:#222226!important;
     padding: 2em 0;
 }
 .menu a{
     text-decoration: none;
     margin: .1em auto;
     font-size: 1.4em;
-    color: cadetblue;
+    color: #777!important ;
 }
 
 .menu a:hover{

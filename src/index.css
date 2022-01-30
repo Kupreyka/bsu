@@ -6,3 +6,8 @@
 .MuiInputBase-root{
     display: none!important;
 }
+
+body{
+    background: #222226!important;
+    color: #fff;
+}

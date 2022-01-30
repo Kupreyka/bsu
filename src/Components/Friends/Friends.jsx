@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import defPhoto from "../../assets/default-photo.png";
 import style from './css/friendPage.module.css'
 import {NavLink} from "react-router-dom";
+import {Button} from "@material-ui/core";
 
 const Friends = (props, {portionSize = 10}) => {
 
@@ -43,14 +44,15 @@ const Friends = (props, {portionSize = 10}) => {
                 </div>
                 <div>
                     {user.followed
-                        ? <button disabled={props.followingInProgress.some(id => id === user.id)} onClick={() => {
+                        ? <Button className={style.btn} disabled={props.followingInProgress.some(id => id === user.id)} onClick={() => {
                             props.unfollow(user.id)
-                        }}>Unfollow</button>
-                        : <button disabled={props.followingInProgress.some(id => id === user.id)} onClick={() => {
+                        }}>Unfollow</Button>
+                        : <Button className={style.btn} disabled={props.followingInProgress.some(id => id === user.id)} onClick={() => {
                             props.follow(user.id)
-                        }}>follow</button>
+                        }}>follow</Button>
                     }
                 </div>
+
                 <div>
                     {user.name}
                 </div>

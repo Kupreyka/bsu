@@ -1,6 +1,14 @@
+import {Helmet} from "react-helmet";
+import React from "react";
+
 const Feed = () => {
     return(
-        <div>Feed</div>
+        <>
+            <Helmet>
+                <title>Новости</title>
+            </Helmet>
+            <div>Feed</div>
+        </>
     )
 }
 

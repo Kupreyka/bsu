@@ -19,6 +19,7 @@ import {
     getPageUser,
     getTotalCountUsers, getUsers
 } from "../../redux/users-selectors";
+import {Helmet} from "react-helmet";
 
 
 class FriendsContainer extends React.Component {
@@ -36,7 +37,10 @@ class FriendsContainer extends React.Component {
 
     render() {
         return (<div>
-            <Preloader {...this.props}/>
+            <Helmet>
+                <title>Друзья</title>
+            </Helmet>
+            {this.props.isFetching ? <Preloader/> : null } {/*<Preloader {...this.props}/>*/}
             <Friends {...this.props} onPageChange={this.onPageChange}/>
         </div>)
     }

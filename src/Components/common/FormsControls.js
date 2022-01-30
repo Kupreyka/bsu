@@ -1,6 +1,7 @@
 import React from "react";
 import s from './FormsControls.module.css'
 import {Checkbox} from "@material-ui/core";
+import {Alert} from "@mui/material";
 
 export const Textarea = ({input, meta, ...props}) => {
 
@@ -25,7 +26,10 @@ export const Input = ({input, meta, ...props}) => {
             <div>
                 <input {...props} {...input}/>
             </div>
-            {hasError && <span>{meta.error}</span> }
+            {hasError && <Alert variant="filled" severity="error">
+                {meta.error}
+            </Alert>}
+            {/*{hasError && <span>{meta.error}</span> }*/}
         </div>
     )
 }
