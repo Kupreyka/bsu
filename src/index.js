@@ -8,7 +8,7 @@ import store from "./redux/redux-store";
 import {Provider} from "react-redux";
 
 
-export let Rerender = (state) => {
+
     ReactDOM.render(
         <React.StrictMode>
             <BrowserRouter>
@@ -19,12 +19,12 @@ export let Rerender = (state) => {
         </React.StrictMode>,
         document.getElementById('root')
     )
-}
-Rerender(store.getState())
+
+/*Rerender(store.getState())
 
 store.subscribe(() => {
     Rerender(store.getState())
-})
+})*/
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

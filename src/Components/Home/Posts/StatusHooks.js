@@ -27,12 +27,14 @@ const StatusHooks = (props) => {
         <div className="status">
             {!editMode &&
             <div>
-                <span onClick={activeEditMode}>{props.status || 'Установить статус'}</span>
+                <span
+                    onClick={props.isOwner && activeEditMode}>{props.isOwner ? props.status || 'Установить статус' : props.status}</span>
             </div>
             }
             {editMode &&
             <div>
-                <input className={style.statusInput} onChange={onStatusChange} autoFocus={true} onBlur={inactiveEditMode} type="text"
+                <input className={style.statusInput} onChange={onStatusChange} autoFocus={true}
+                       onBlur={inactiveEditMode} type="text"
                        value={status}/>
             </div>
             }

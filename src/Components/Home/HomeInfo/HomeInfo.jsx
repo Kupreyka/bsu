@@ -46,16 +46,17 @@ const HomeInfo = (props) => {
                 </div>
                 <div>
                     <div className={style.profileFullName}>{props.profile.fullName}</div>
-                    <StatusHooks status={props.status} updateProfileStatus={props.updateProfileStatus}/>
+                    <StatusHooks status={props.status} updateProfileStatus={props.updateProfileStatus}
+                                 isOwner={props.isOwner}/>
                     {editMode ?
                         <ProfileDataFormRedux onSubmit={onSubmit} profile={props.profile}
                                               initialValues={props.profile}/> :
                         <ProfileData profile={props.profile} isOwner={props.isOwner} goToEditMode={() => {
                             setEditMode(true)
                         }}/>}
-                    <PostsContainer/>
+                    <PostsContainer isOwner={props.isOwner}/>
                 </div>
-                <div className={style.statusPage}>online</div>
+                <div className={style.statusPage}>{props.isOwner ? 'online' : 'offline'}</div>
             </div>
 
 

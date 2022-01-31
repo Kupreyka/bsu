@@ -46,7 +46,7 @@ const ProfilePageReducer = (state = initialState, action) => {
     }
 
 }
-export const AddPostActionCreator = (NewPost) => {
+export const AddPostSuccess = (NewPost) => {
     return {type: ADD_POST, NewPost}
 }
 export const UpdateNewPostTextActionCreator = (text) => {

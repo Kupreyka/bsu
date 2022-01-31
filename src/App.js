@@ -1,7 +1,7 @@
 import './App.css';
 import Footer from "./Components/Footer/Footer";
 import Menu from "./Components/Sidebar-menu/Menu";
-import {Route, withRouter} from "react-router-dom";
+import {Redirect, Route, withRouter} from "react-router-dom";
 import Feed from "./Components/Feed/Feed";
 import MessageContainer from "./Components/Message/MessgeContainer";
 import FriendsClass from "./Components/Friends/FriendsContainer";
@@ -33,6 +33,7 @@ class App extends React.Component {
                 <div className='main'>
                     <Menu/>
                     <div className="components">
+                        <Route exact path='/' render={()=> <Redirect to={'/home'}/>}/>
                         <Route path='/home/:UserId?' render={() => <HomeContainer/>}/>
                         <Route path='/message' render={() => <MessageContainer/>}/>
                         <Route path='/feed' render={() => <Feed/>}/>

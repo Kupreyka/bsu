@@ -7,15 +7,16 @@ import {Textarea} from "../../common/FormsControls";
 import {Button} from "@material-ui/core";
 
 
+
 const Posts = (props) => {
     let messageElement = props.state.messageData.map(el => <Post message={el.message}/>)
 
     let onPostSubmit = values => {
-        props.AddPost(values.NewPost)
+        props.AddPostSuccess(values.NewPost)
     }
     return (
         <div className={style.post}>
-            <NewReduxPostForm onSubmit={onPostSubmit}/>
+            <NewReduxPostForm onSubmit={onPostSubmit} isOwner={props.isOwner}/>
             {messageElement}
         </div>
     )
@@ -24,11 +25,10 @@ const Posts = (props) => {
 let MaxLength = maxLengthCreator(300)
 
 let NewPostForm = (props) => {
-
     return (
-        <form onSubmit={props.handleSubmit}>
+        <form onSubmit={props.handleSubmit} >
             <Field className={style.postTextArea} component={Textarea} name={'NewPost'}
-                   placeholder={'Что у Вас нового?'}
+                   placeholder={props.isOwner ? 'Что у Вас нового?' : 'Напишите что-нибудь...'}
             />
             <button>
                 <Button variant="contained" component="span">
