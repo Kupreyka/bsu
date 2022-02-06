@@ -18,8 +18,8 @@ const Friends = (props, {portionSize = 10}) => {
     let rightPortionPageNumber = portionNumber * portionSize;
 
     return (
-        <div>
-            {portionNumber > 1 &&
+        <div className={style.friendsPage}>
+            <div className={style.pagination}>{portionNumber > 1 &&
             <button onClick={() => {
                 setPortionNumber(portionNumber - 1)
             }}>PREV</button>}
@@ -34,27 +34,26 @@ const Friends = (props, {portionSize = 10}) => {
             {portionCount > portionNumber &&
             <button onClick={() => {
                 setPortionNumber(portionNumber + 1)
-            }}>NEXT</button>}
-            {props.users.map(user => <div key={user.id}>
+            }}>NEXT</button>}</div>
+            {props.users.map(user => <div className={style.friendsItem} key={user.id}>
                 <div>
                     <NavLink to={/home/ + user.id}>
                         <img
                             src={user.photos.small != null ? user.photos.small : defPhoto}/>
                     </NavLink>
                 </div>
+                <div className={style.friendsItemName}>
+                    {user.name}
+                </div>
                 <div>
                     {user.followed
                         ? <Button className={style.btn} disabled={props.followingInProgress.some(id => id === user.id)} onClick={() => {
                             props.unfollow(user.id)
-                        }}>Unfollow</Button>
+                        }}>Отписаться</Button>
                         : <Button className={style.btn} disabled={props.followingInProgress.some(id => id === user.id)} onClick={() => {
                             props.follow(user.id)
-                        }}>follow</Button>
+                        }}>Подписаться</Button>
                     }
-                </div>
-
-                <div>
-                    {user.name}
                 </div>
                 {/*<div>{user.status}</div>
                 <div>{user.location.city}</div>

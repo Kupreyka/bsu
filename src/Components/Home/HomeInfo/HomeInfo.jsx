@@ -11,6 +11,9 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import FacebookIcon from '@mui/icons-material/Facebook';
+import LinkIcon from '@mui/icons-material/Link';
+import LanguageIcon from '@mui/icons-material/Language';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
 
 const HomeInfo = (props) => {
@@ -70,28 +73,34 @@ const HomeInfo = (props) => {
 }
 
 const Contact = ({contactTitle, contactValue}) => {
-    if (!contactValue){
+
+    if (!contactValue) {
         return null
+    }
+
+    const Icon = ({component}) => {
+        return <div><a href={contactValue}>{component}</a></div>
     }
 
     switch (contactTitle) {
         case 'twitter':
-            return <div><a href={contactValue}><TwitterIcon/></a></div>
+            return <Icon component={<TwitterIcon/>}/>
         case 'instagram':
-            return <div><a href={contactValue}><InstagramIcon/></a></div>
+            return <Icon component={<InstagramIcon/>}/>
         case 'github':
-            return <div><a href={contactValue}><GitHubIcon/></a></div>
+            return <Icon component={<GitHubIcon/>}/>
         case 'youtube':
-            return <div><a href={contactValue}><YouTubeIcon/></a></div>
+            return <Icon component={<YouTubeIcon/>}/>
         case 'facebook':
-            return <div><a href={contactValue}><FacebookIcon/></a></div>
+            return <Icon component={<FacebookIcon/>}/>
+        case 'website':
+            return <Icon component={<LanguageIcon/>}/>
+        case 'mainLink':
+            return <Icon component={<LinkedInIcon/>}/>
         default:
-            return <div className={style.contact}><b>{contactTitle}:</b> <a href={contactValue}>{contactValue}</a></div>
+            return <Icon component={<LinkIcon/>}/>
 
     }
-    /*if (contactTitle == 'twitter'){
-        return <a href={contactValue}><TwitterIcon href={contactValue}/></a>
-    }*/
 
 }
 
@@ -110,9 +119,10 @@ const ProfileData = (props) => {
             </div>
             }
             <div>
-                <span>Контакты:</span><div className={style.contactItem}>{Object.keys(props.profile.contacts).map(key => {
-                return <Contact contactTitle={key} contactValue={props.profile.contacts[key]}/>
-            })}</div>
+                <span>Контакты:</span>
+                <div className={style.contactItem}>{Object.keys(props.profile.contacts).map(key => {
+                    return <Contact contactTitle={key} contactValue={props.profile.contacts[key]}/>
+                })}</div>
             </div>
             {props.isOwner && <div>
                 <Button className="redBtn" onClick={props.goToEditMode} variant="contained">Редактировать</Button>

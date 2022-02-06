@@ -15,3 +15,25 @@
     color: #fff;
 }
 
+
+.friendsPage{
+    padding: 1em 2em;
+}
+
+.friendsItem{
+    margin: 1em 0;
+}
+
+.friendsItem img{
+    border-radius: 50%;
+    width: 8em;
+}
+
+.friendsItemName{
+    font-size: 18px;
+    margin: .5em 0;
+}
+
+.pagination{
+    text-align: center;
+}
