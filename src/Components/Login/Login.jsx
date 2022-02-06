@@ -8,6 +8,7 @@ import {Redirect} from "react-router-dom";
 import {Helmet} from "react-helmet";
 import style from "./Login.module.css"
 import {Button} from "@material-ui/core";
+import {Alert} from "@material-ui/lab";
 
 const LoginForm = (props) => {
     return (
@@ -22,16 +23,16 @@ const LoginForm = (props) => {
             <div>
                 <Field type="checkbox" name={'rememberMe'} component={CheckboxCustom}/> Remember me
             </div>
+            {props.captcha && <img className={style.captchaImg} src={props.captcha}/>}
+            {props.captcha && <Field name={'captcha'} className={style.captchaInput} component={Input}/>}
+            {props.error &&
+            <Alert className={style.errorLoginForm} variant="filled" severity="error">{props.error}</Alert>
+            }
             <div>
                 <button>
                     <Button className={style.customBtn} variant="contained">Войти</Button>
                 </button>
             </div>
-            {props.captcha && <img src={props.captcha}/>}
-            {props.captcha && <Field name={'captcha'} component={Input}/>}
-            {props.error &&
-            <div>{props.error}</div>
-            }
         </form>
     )
 }

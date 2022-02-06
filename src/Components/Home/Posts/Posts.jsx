@@ -2,14 +2,15 @@ import style from "../Home.module.css";
 import Post from "../Post/Post";
 import React from "react";
 import {Field, reduxForm} from "redux-form";
-import {maxLengthCreator, required} from "../../../utilities/validator";
+import {maxLengthCreator} from "../../../utilities/validator";
 import {Textarea} from "../../common/FormsControls";
 import {Button} from "@material-ui/core";
 
 
-
 const Posts = (props) => {
-    let messageElement = props.state.messageData.map(el => <Post message={el.message}/>)
+
+    let messageElement = props.state.messageData.map(el => <Post addLike={props.addLike} deleteLike={props.deleteLike}
+                                                                 like={el.like} message={el.message}/>)
 
     let onPostSubmit = values => {
         props.AddPostSuccess(values.NewPost)
@@ -25,8 +26,9 @@ const Posts = (props) => {
 let MaxLength = maxLengthCreator(300)
 
 let NewPostForm = (props) => {
+
     return (
-        <form onSubmit={props.handleSubmit} >
+        <form onSubmit={props.handleSubmit}>
             <Field className={style.postTextArea} component={Textarea} name={'NewPost'}
                    placeholder={props.isOwner ? 'Что у Вас нового?' : 'Напишите что-нибудь...'}
             />

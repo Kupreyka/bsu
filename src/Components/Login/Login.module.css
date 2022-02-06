@@ -11,7 +11,7 @@
 .login input {
     background: #444446!important;
     padding:.7em 1.5em;
-    margin: .5em 0;
+    margin: .5em 0 1em 0;
     border-radius: 8px;
     border: none;
     color: #fff;
@@ -24,4 +24,13 @@ button{
 
 .customBtn{
     height: 2em;
+}
+
+.errorLoginForm{
+    margin: 1em 0;
+}
+
+.captchaImg{
+    width: 150px;
+    margin: 1em 0;
 }

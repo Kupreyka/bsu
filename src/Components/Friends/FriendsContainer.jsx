@@ -40,7 +40,7 @@ class FriendsContainer extends React.Component {
             <Helmet>
                 <title>Друзья</title>
             </Helmet>
-            {this.props.isFetching ? <Preloader/> : null } {/*<Preloader {...this.props}/>*/}
+            {this.props.isFetching ? <Preloader/> : null} {/*<Preloader {...this.props}/>*/}
             <Friends {...this.props} onPageChange={this.onPageChange}/>
         </div>)
     }

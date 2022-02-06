@@ -33,6 +33,7 @@ class App extends React.Component {
                 <div className='main'>
                     <Menu/>
                     <div className="components">
+                        <Route exact path='/bsu' render={()=> <Redirect to={'/home'}/>}/>
                         <Route exact path='/' render={()=> <Redirect to={'/home'}/>}/>
                         <Route path='/home/:UserId?' render={() => <HomeContainer/>}/>
                         <Route path='/message' render={() => <MessageContainer/>}/>

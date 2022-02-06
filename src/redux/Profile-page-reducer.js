@@ -6,6 +6,8 @@ const UPDATE_NEW_POST_TEXT = 'profile/UPDATE-NEW-POST-TEXT';
 const SET_PROFILE_PAGE = 'profile/SET_PROFILE_PAGE';
 const SET_PROFILE_STATUS = 'profile/SET_PROFILE_STATUS';
 const SAVE_PHOTO = 'profile/SAVE_PHOTO';
+const ADD_LIKE = 'profile/ADD_LIKE'
+const DELETE_LIKE = 'profile/DELETE_LIKE'
 
 
 
@@ -16,13 +18,12 @@ let initialState = {
 }
 
 const ProfilePageReducer = (state = initialState, action) => {
-
     switch (action.type) {
         case ADD_POST: {
             let stateCopy = {...state}
             stateCopy.messageData = [...state.messageData]
             stateCopy.messageData.push(
-                {message: action.NewPost}
+                {message: action.NewPost, like: false}
             );
             return stateCopy;
         }
@@ -41,11 +42,29 @@ const ProfilePageReducer = (state = initialState, action) => {
                 ...state, profile: {...state.profile, photos: action.photos}
             }
         }
+        case ADD_LIKE: {
+            let objIndex = state.messageData.findIndex((obj => obj.like == false))
+            return {
+                ...state, ...state.messageData[objIndex].like = true
+            }
+        }
+        case DELETE_LIKE: {
+            let objIndex = state.messageData.findIndex((obj => obj.like == true))
+            return {
+                ...state, ...state.messageData[objIndex].like = false
+            }
+        }
         default:
             return state
     }
 
 }
+
+
+export const addLike = () => ({type: ADD_LIKE})
+export const deleteLike = () => ({type: DELETE_LIKE})
+
+
 export const AddPostSuccess = (NewPost) => {
     return {type: ADD_POST, NewPost}
 }
@@ -64,7 +83,6 @@ const setProfileStatus = (status) => {
 const savePhotoSuccess = (photos) => {
     return {type: SAVE_PHOTO, photos}
 }
-
 
 
 export const getUserId = (UserId) => {
@@ -120,7 +138,7 @@ export const saveProfile = (profile) => {
                     dispatch(stopSubmit('edit-profile', {_error: response.data.messages[0]}));
                     //return Promise.reject(response.data.messages[0])
                 }
-        })
+            })
     }
 }
 export default ProfilePageReducer

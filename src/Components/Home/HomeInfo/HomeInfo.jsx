@@ -6,6 +6,11 @@ import style from './HomeInfo.module.css'
 import ProfileDataFormRedux from "./ProfileDataForm";
 import {Button, Input} from "@material-ui/core";
 import PostsContainer from "../Posts/PostsContainrt";
+import TwitterIcon from '@mui/icons-material/Twitter';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import YouTubeIcon from '@mui/icons-material/YouTube';
+import FacebookIcon from '@mui/icons-material/Facebook';
 
 
 const HomeInfo = (props) => {
@@ -65,7 +70,29 @@ const HomeInfo = (props) => {
 }
 
 const Contact = ({contactTitle, contactValue}) => {
-    return <div className={style.contact}><b>{contactTitle}:</b> <a href={contactValue}>{contactValue}</a></div>
+    if (!contactValue){
+        return null
+    }
+
+    switch (contactTitle) {
+        case 'twitter':
+            return <div><a href={contactValue}><TwitterIcon/></a></div>
+        case 'instagram':
+            return <div><a href={contactValue}><InstagramIcon/></a></div>
+        case 'github':
+            return <div><a href={contactValue}><GitHubIcon/></a></div>
+        case 'youtube':
+            return <div><a href={contactValue}><YouTubeIcon/></a></div>
+        case 'facebook':
+            return <div><a href={contactValue}><FacebookIcon/></a></div>
+        default:
+            return <div className={style.contact}><b>{contactTitle}:</b> <a href={contactValue}>{contactValue}</a></div>
+
+    }
+    /*if (contactTitle == 'twitter'){
+        return <a href={contactValue}><TwitterIcon href={contactValue}/></a>
+    }*/
+
 }
 
 const ProfileData = (props) => {
@@ -83,9 +110,9 @@ const ProfileData = (props) => {
             </div>
             }
             <div>
-                <span>Контакты:</span>{Object.keys(props.profile.contacts).map(key => {
+                <span>Контакты:</span><div className={style.contactItem}>{Object.keys(props.profile.contacts).map(key => {
                 return <Contact contactTitle={key} contactValue={props.profile.contacts[key]}/>
-            })}
+            })}</div>
             </div>
             {props.isOwner && <div>
                 <Button className="redBtn" onClick={props.goToEditMode} variant="contained">Редактировать</Button>
