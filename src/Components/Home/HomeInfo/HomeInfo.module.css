@@ -9,6 +9,7 @@
 
 .profileFullName {
     font-size: 22px;
+    font-weight: 600;
 }
 
 .mainPhoto {
@@ -30,6 +31,7 @@
     text-align: center;
     color: #aaa!important;
     font-size: 14px;
+    font-weight: 600;
 }
 
 

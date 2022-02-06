@@ -15,6 +15,7 @@ const Post = (props) => {
     }
     return (
         <div className={style.postCustom}>
+            <img src={props.smallPhoto}/>
             <div className={style.post}>{props.message}</div>
             <Checkbox {...label} checked={props.like} onChange={soldCheckbox} icon={<FavoriteBorder/>}
                       checkedIcon={<Favorite/>}/>

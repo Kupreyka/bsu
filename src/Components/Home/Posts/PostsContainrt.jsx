@@ -3,6 +3,7 @@ import {addLike, AddPostSuccess, deleteLike} from './../../../redux/Profile-page
 import Posts from "./Posts";
 import {connect} from "react-redux";
 
+
 class PostsContainer extends React.Component {
 
     render() {

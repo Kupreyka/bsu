@@ -6,6 +6,11 @@
     border-radius: 8px;
 }
 
+.postCustom img{
+    border-radius: 50%;
+    width: 60px;
+}
+
 .post{
     padding: 1em 0;
 }

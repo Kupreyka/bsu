@@ -9,7 +9,7 @@ import {Button} from "@material-ui/core";
 
 const Posts = (props) => {
 
-    let messageElement = props.state.messageData.map(el => <Post addLike={props.addLike} deleteLike={props.deleteLike}
+    let messageElement = props.state.messageData.map(el => <Post smallPhoto={props.state.profile.photos.small} addLike={props.addLike} deleteLike={props.deleteLike}
                                                                  like={el.like} message={el.message}/>)
 
     let onPostSubmit = values => {
@@ -17,8 +17,13 @@ const Posts = (props) => {
     }
     return (
         <div className={style.post}>
-            <NewReduxPostForm onSubmit={onPostSubmit} isOwner={props.isOwner}/>
-            {messageElement}
+            {props.isOwner ?
+            <div>
+                <NewReduxPostForm onSubmit={onPostSubmit} isOwner={props.isOwner}/>
+                {messageElement}
+            </div>
+                : <div>Записи на стене отсутствуют</div>
+            }
         </div>
     )
 }

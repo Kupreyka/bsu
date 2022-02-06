@@ -26,6 +26,7 @@
     font-size: 14px;
     border: none;
     margin: 0 0 1em 0;
+    font-weight: 600;
 }
 
 .status:hover{
